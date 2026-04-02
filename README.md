@@ -24,86 +24,86 @@ Hệ thống phát hiện và theo dõi người đeo khẩu trang theo thời g
     - IOU threshold
     - buffer size
 ##  📊 3. data/ – Dữ liệu (TV2 phụ trách)
-data/
-raw/
-- Dữ liệu gốc:
---  video quay
---  ảnh chưa xử lý
-processed/
-Dữ liệu đã tiền xử lý:
-resize
-clean
-chuẩn hóa
-images/
-Ảnh dùng để train YOLO
-images/train/   → ảnh train
-images/val/     → ảnh validation
-labels/
-Nhãn tương ứng với ảnh
-labels/train/   → label train
-labels/val/     → label val
-dataset.yaml
-File config dataset cho YOLO:
-train: images/train
-val: images/val
+- data/
+  - raw/
+    - Dữ liệu gốc:
+      -  video quay
+      -  ảnh chưa xử lý
+  - processed/
+    - Dữ liệu đã tiền xử lý:
+      - resize
+      - clean
+      - chuẩn hóa
+  - images/
+    - Ảnh dùng để train YOLO
+      - images/train/   → ảnh train
+      - images/val/     → ảnh validation
+  - labels/
+    - Nhãn tương ứng với ảnh
+      - labels/train/   → label train
+      - labels/val/     → label val
+  - dataset.yaml
+    - File config dataset cho YOLO:
+      - train: images/train
+      - val: images/val
 
-names:
-  0: mask
-  1: no_mask
-🛠 4. scripts/ – Script xử lý dữ liệu (TV2)
-scripts/
-extract_frames.py
-Cắt video → ảnh
-preprocess.py
-Resize, normalize ảnh
-split_dataset.py
-Chia train / validation
-🤖 5. models/ – Model (TV3)
-models/
-weights/
-Chứa model đã train:
-best.pt
-train_logs/
-Log quá trình train:
-loss
-accuracy
-biểu đồ
-🧠 6. src/ – Code chính hệ thống
-src/
-🔹 detection/ (TV3)
-yolo_detector.py
-Load model YOLO
-Detect mask / no_mask
-Output:
-bounding box
-class
-🔹 tracking/ (TV4 – CORE)
-tracker.py
-Tracking bằng ByteTrack
-Gán ID cho từng người
-🔹 timer/ (TV4)
-timer.py
-Đếm thời gian theo từng ID
-Reset khi mất tracking
-🔹 alert/ (TV1)
-alert.py
-Xử lý cảnh báo:
+      - names:
+        - 0: mask
+        - 1: no_mask
+##  🛠 4. scripts/ – Script xử lý dữ liệu (TV2)
+- scripts/
+  - extract_frames.py
+    - Cắt video → ảnh
+  - preprocess.py
+    - Resize, normalize ảnh
+  - split_dataset.py
+    - Chia train / validation
+##  🤖 5. models/ – Model (TV3)
+- models/
+  - weights/
+    - Chứa model đã train:
+      - best.pt
+  - train_logs/
+    - Log quá trình train:
+      - loss
+      - accuracy
+      - biểu đồ
+##  🧠 6. src/ – Code chính hệ thống
+- src/
+- 🔹 detection/ (TV3)
+- yolo_detector.py
+  - Load model YOLO
+  - Detect mask / no_mask
+  - Output:
+    -bounding box
+    -class
+- 🔹 tracking/ (TV4 – CORE)
+- tracker.py
+- Tracking bằng ByteTrack
+- Gán ID cho từng người
+- 🔹 timer/ (TV4)
+- timer.py
+  - Đếm thời gian theo từng ID
+  - Reset khi mất tracking
+- 🔹 alert/ (TV1)
+- alert.py
+- Xử lý cảnh báo:
 
-30s → alert
+- 30s → alert
 
-hiển thị text / âm thanh
-🔹 visualization/ (TV1)
-draw.py
-Vẽ:
-bounding box
-ID
-timer
-alert
-🔹 main.py ⭐
-File chạy chính của hệ thống
-Kết nối toàn bộ:
-YOLO → Tracking → Timer → Alert → Hiển thị
-🎥 7. demo/ – Demo hệ thống (TV1)
+- hiển thị text / âm thanh
+- 🔹 visualization/ (TV1)
+- draw.py
+- Vẽ:
+  - bounding box
+  - ID
+  - timer
+  - alert
+- 🔹 main.py ⭐
+- File chạy chính của hệ thống
+- Kết nối toàn bộ:
+  - YOLO → Tracking → Timer → Alert → Hiển thị
+##  🎥 7. demo/ – Demo hệ thống (TV1)
 demo/
 input_videos/
 Video đầu vào để test
