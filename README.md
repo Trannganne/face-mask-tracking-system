@@ -23,7 +23,7 @@ Hệ thống phát hiện và theo dõi người đeo khẩu trang theo thời g
     - ngưỡng tracking
     - IOU threshold
     - buffer size
-##  📊 3. data/ – Dữ liệu (TV2 phụ trách)
+##  📊 3. data/ – Dữ liệu (Hồng Ngọc)
 - data/
   - raw/
     - Dữ liệu gốc:
@@ -50,7 +50,7 @@ Hệ thống phát hiện và theo dõi người đeo khẩu trang theo thời g
       - names:
         - 0: mask
         - 1: no_mask
-##  🛠 4. scripts/ – Script xử lý dữ liệu (TV2)
+##  🛠 4. scripts/ – Script xử lý dữ liệu (Hồng Ngọc)
 - scripts/
   - extract_frames.py
     - Cắt video → ảnh
@@ -58,7 +58,7 @@ Hệ thống phát hiện và theo dõi người đeo khẩu trang theo thời g
     - Resize, normalize ảnh
   - split_dataset.py
     - Chia train / validation
-##  🤖 5. models/ – Model (TV3)
+##  🤖 5. models/ – Model (Quốc Trường)
 - models/
   - weights/
     - Chứa model đã train:
@@ -70,49 +70,47 @@ Hệ thống phát hiện và theo dõi người đeo khẩu trang theo thời g
       - biểu đồ
 ##  🧠 6. src/ – Code chính hệ thống
 - src/
-- 🔹 detection/ (TV3)
+- 🔹 detection/ (Quốc Trường)
 - yolo_detector.py
   - Load model YOLO
   - Detect mask / no_mask
   - Output:
     -bounding box
     -class
-- 🔹 tracking/ (TV4 – CORE)
+- 🔹 tracking/ (Kim Ngân – CORE)
 - tracker.py
 - Tracking bằng ByteTrack
 - Gán ID cho từng người
-- 🔹 timer/ (TV4)
+- 🔹 timer/ (Kim Ngân)
 - timer.py
   - Đếm thời gian theo từng ID
   - Reset khi mất tracking
-- 🔹 alert/ (TV1)
-- alert.py
-- Xử lý cảnh báo:
-
-- 30s → alert
-
-- hiển thị text / âm thanh
-- 🔹 visualization/ (TV1)
-- draw.py
-- Vẽ:
-  - bounding box
-  - ID
-  - timer
-  - alert
+- 🔹 alert/ (Duy Hưng)
+  - alert.py
+    - Xử lý cảnh báo:
+    - 30s → alert
+    - hiển thị text / âm thanh
+- 🔹 visualization/ (Duy Hưng)
+  - draw.py
+    - Vẽ:
+      - bounding box
+      - ID
+      - timer
+      - alert
 - 🔹 main.py ⭐
-- File chạy chính của hệ thống
-- Kết nối toàn bộ:
-  - YOLO → Tracking → Timer → Alert → Hiển thị
-##  🎥 7. demo/ – Demo hệ thống (TV1)
+  - File chạy chính của hệ thống
+  - Kết nối toàn bộ:
+    - YOLO → Tracking → Timer → Alert → Hiển thị
+##  🎥 7. demo/ – Demo hệ thống (Duy Hưng)
 - demo/
   - input_videos/
     - Video đầu vào để test
-  -output_videos/
-    -Video sau khi detect + tracking
-  -demo_app.py
-    -Chạy demo:
-      -OpenCV hoặc Streamlit
-## 📈 8. evaluation/ – Đánh giá (TV1)
+  - output_videos/
+    - Video sau khi detect + tracking
+  - demo_app.py
+    - Chạy demo:
+      - OpenCV hoặc Streamlit
+## 📈 8. evaluation/ – Đánh giá (Duy Hưng)
 - evaluation/
   - metrics.py
     -Tính:
@@ -125,11 +123,11 @@ Hệ thống phát hiện và theo dõi người đeo khẩu trang theo thời g
     -Lưu:
     -bảng kết quả
     -biểu đồ
-##  📓 9. notebooks/ – Notebook (TV2 + TV3)
+##  📓 9. notebooks/ – Notebook 
 - notebooks/
-  - data_analysis.ipynb
+  - data_analysis.ipynb( (Hồng Ngọc)
     -Phân tích dữ liệu
-  - training.ipynb
+  - training.ipynb( Quốc Trường)
     -Train thử model
 📄 10. reports/ – Báo cáo
 - figures: chứa hình ảnh
