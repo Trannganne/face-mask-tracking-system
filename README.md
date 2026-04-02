@@ -7,28 +7,28 @@ README.md
 - Hướng dẫn cài đặt & chạy hệ thống
 - Mô tả cấu trúc project
 requirements.txt
-Danh sách thư viện cần cài
-Cài bằng:
+- Danh sách thư viện cần cài
+- Cài bằng:
 pip install -r requirements.txt
 .gitignore
-Bỏ qua file không cần push (dataset lớn, cache, log…)
-⚙️ 2. configs/ – Cấu hình hệ thống
+- Bỏ qua file không cần push (dataset lớn, cache, log…)
+##  ⚙️ 2. configs/ – Cấu hình hệ thống
 configs/
 config.py
-Chứa tham số hệ thống:
+- Chứa tham số hệ thống:
 ALERT_TIME = 30
 CONFIDENCE_THRESHOLD = 0.5
 tracker.yaml
-Cấu hình cho ByteTrack:
-ngưỡng tracking
-IOU threshold
-buffer size
-📊 3. data/ – Dữ liệu (TV2 phụ trách)
+- Cấu hình cho ByteTrack:
+- ngưỡng tracking
+- IOU threshold
+- buffer size
+##  📊 3. data/ – Dữ liệu (TV2 phụ trách)
 data/
 raw/
-Dữ liệu gốc:
-video quay
-ảnh chưa xử lý
+- Dữ liệu gốc:
+--  video quay
+--  ảnh chưa xử lý
 processed/
 Dữ liệu đã tiền xử lý:
 resize
