@@ -1,7 +1,7 @@
 # face-mask-tracking-system
 Hệ thống phát hiện và theo dõi người đeo khẩu trang theo thời gian sử dụng YOLO và ByteTrack
-##📂 Cấu trúc dự án & mô tả
-##🔹 1. Root (thư mục gốc)
+##  📂 Cấu trúc dự án & mô tả
+##  🔹 1. Root (thư mục gốc)
 README.md
 - Giới thiệu đề tài
 - Hướng dẫn cài đặt & chạy hệ thống
