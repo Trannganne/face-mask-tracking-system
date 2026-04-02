@@ -104,32 +104,34 @@ Hệ thống phát hiện và theo dõi người đeo khẩu trang theo thời g
 - Kết nối toàn bộ:
   - YOLO → Tracking → Timer → Alert → Hiển thị
 ##  🎥 7. demo/ – Demo hệ thống (TV1)
-demo/
-input_videos/
-Video đầu vào để test
-output_videos/
-Video sau khi detect + tracking
-demo_app.py
-Chạy demo:
-OpenCV
-hoặc Streamlit
-📈 8. evaluation/ – Đánh giá (TV1)
-evaluation/
-metrics.py
-Tính:
-Precision
-Recall
-mAP
-confusion_matrix.py
-Vẽ confusion matrix
-results/
-Lưu:
-bảng kết quả
-biểu đồ
-📓 9. notebooks/ – Notebook (TV2 + TV3)
-notebooks/
-data_analysis.ipynb
-Phân tích dữ liệu
-training.ipynb
-Train thử model
+- demo/
+  - input_videos/
+    - Video đầu vào để test
+  -output_videos/
+    -Video sau khi detect + tracking
+  -demo_app.py
+    -Chạy demo:
+      -OpenCV hoặc Streamlit
+## 📈 8. evaluation/ – Đánh giá (TV1)
+- evaluation/
+  - metrics.py
+    -Tính:
+      -Precision
+      -Recall
+      -mAP
+  -confusion_matrix.py
+    -Vẽ confusion matrix
+  -results/
+    -Lưu:
+    -bảng kết quả
+    -biểu đồ
+##  📓 9. notebooks/ – Notebook (TV2 + TV3)
+- notebooks/
+  - data_analysis.ipynb
+    -Phân tích dữ liệu
+  - training.ipynb
+    -Train thử model
 📄 10. reports/ – Báo cáo
+- figures: chứa hình ảnh
+- bib: chứa nguồn tham khảo
+- .tex: code latex
