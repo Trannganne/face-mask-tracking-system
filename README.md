@@ -3,9 +3,9 @@ Hệ thống phát hiện và theo dõi người đeo khẩu trang theo thời g
 📂 Cấu trúc dự án & mô tả
 🔹 1. Root (thư mục gốc)
 README.md
-.Giới thiệu đề tài
-.Hướng dẫn cài đặt & chạy hệ thống
-.Mô tả cấu trúc project
+- Giới thiệu đề tài
+- Hướng dẫn cài đặt & chạy hệ thống
+- Mô tả cấu trúc project
 requirements.txt
 Danh sách thư viện cần cài
 Cài bằng:
