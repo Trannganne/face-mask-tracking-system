@@ -113,16 +113,16 @@ Hệ thống phát hiện và theo dõi người đeo khẩu trang theo thời g
 ## 📈 8. evaluation/ – Đánh giá (Duy Hưng)
 - evaluation/
   - metrics.py
-    -Tính:
-      -Precision
-      -Recall
-      -mAP
-  -confusion_matrix.py
-    -Vẽ confusion matrix
-  -results/
-    -Lưu:
-    -bảng kết quả
-    -biểu đồ
+    - Tính:
+      - Precision
+      - Recall
+      - mAP
+  - confusion_matrix.py
+    - Vẽ confusion matrix
+  - results/
+    - Lưu:
+    - bảng kết quả
+    - biểu đồ
 ##  📓 9. notebooks/ – Notebook 
 - notebooks/
   - data_analysis.ipynb( (Hồng Ngọc)
