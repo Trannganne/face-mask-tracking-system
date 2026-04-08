@@ -1,1 +1,88 @@
+\documentclass[12pt,a4paper]{article}
 
+% --- KHAI BÁO THƯ VIỆN ---
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[vietnamese]{babel}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{a4paper, left=2.5cm, right=2cm, top=2cm, bottom=2cm}
+
+% --- THÔNG TIN TÀI LIỆU ---
+\title{Tìm hiểu: \\ Mạng Nơ-ron tích chập (CNN), mô hình YOLO \\ và \\ xây dựng kiến trúc mô hình}
+\author{Trần Quốc Trường 2001231017 - K14}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+% --- NỘI DUNG BÁO CÁO ---
+
+\section{Giới thiệu về Mạng Nơ-ron Tích chập (CNN)}
+Mạng Nơ-ron Tích chập (Convolutional Neural Network - CNN) là công nghệ cốt lõi trong lĩnh vực thị giác máy tính (Computer Vision), được ứng dụng rộng rãi trong nhận diện khuôn mặt, xe tự lái và xử lý hình ảnh [00:10].
+
+\textbf{Sự hạn chế của mô hình truyền thống (MLP) đối với dữ liệu ảnh:}
+\begin{itemize}
+    \item Mạng nơ-ron truyền thống như MLP (Multi-Layer Perceptron) thường phải "duỗi" (flatten) bức ảnh từ dạng ma trận 2 chiều thành một véc-tơ 1 chiều rất dài.
+    \item Việc này làm mất đi toàn bộ thông tin về cấu trúc không gian (mối liên hệ giữa các điểm ảnh/pixel nằm kề nhau).
+    \item Với ảnh có độ phân giải cao, số lượng tham số của mạng MLP phình to quá mức, dẫn đến việc huấn luyện cực kỳ khó khăn.
+\end{itemize}
+
+\textbf{Giải pháp của CNN:}
+\begin{itemize}
+    \item CNN không xem ảnh là chuỗi số rời rạc mà xử lý nó dưới dạng ma trận lưới (có chiều cao, chiều rộng và kênh màu), giúp bảo toàn các mối liên hệ không gian giữa các pixel.
+\end{itemize}
+
+\section{Các thành phần cốt lõi trong kiến trúc CNN}
+Một mô hình CNN chuẩn bao gồm một chuỗi các lớp (layers) xử lý đặc biệt nối tiếp nhau, với mục đích bóc tách từ các chi tiết nhỏ nhất đến tổng thể bức ảnh.
+
+\subsection{Lớp Tích chập (Convolutional Layer)}
+\begin{itemize}
+    \item \textbf{Khái niệm:} Đây là lớp quan trọng nhất, sử dụng các Bộ lọc (Filter/Kernel) trượt dọc qua toàn bộ bức ảnh.
+    \item \textbf{Chức năng:} Mỗi bộ lọc đóng vai trò như một kính lúp chuyên tìm kiếm một đặc trưng cụ thể (ví dụ: cạnh ngang, góc cong, đường chéo).
+    \item \textbf{Đầu ra:} Tại mỗi vị trí quét qua, bộ lọc tính toán mức độ tương đồng và tạo ra các Bản đồ đặc trưng (Feature Map), giúp định vị xem các chi tiết đó nằm ở đâu trong ảnh.
+\end{itemize}
+
+\subsection{Hàm Kích hoạt (Activation Function - Thường dùng ReLU)}
+Ngay sau lớp tích chập, dữ liệu sẽ đi qua hàm kích hoạt, phổ biến nhất là ReLU.
+\begin{itemize}
+    \item \textbf{Vai trò:} Đưa yếu tố phi tuyến tính vào mô hình. Nếu không có lớp này, mạng chỉ học được các đường thẳng đơn giản. ReLU giúp mạng học được các đặc trưng phức tạp, uốn lượn và đa dạng hơn trong dữ liệu thực tế.
+\end{itemize}
+
+\subsection{Lớp Gộp (Pooling Layer)}
+Phổ biến nhất là Max Pooling.
+\begin{itemize}
+    \item \textbf{Vấn đề:} Sau khi qua lớp tích chập, lượng bản đồ đặc trưng sinh ra rất lớn gây quá tải thông tin và rất nhạy cảm với sự thay đổi nhỏ về vị trí.
+    \item \textbf{Cách hoạt động:} Lớp gộp sẽ chia bản đồ đặc trưng thành các ô nhỏ (ví dụ $2 \times 2$) và chỉ giữ lại giá trị lớn nhất (tín hiệu nổi bật nhất) trong mỗi ô.
+    \item \textbf{Lợi ích:} Giảm đáng kể kích thước dữ liệu, tăng tốc độ tính toán, đồng thời giúp mô hình nhận diện được vật thể ngay cả khi nó bị xê dịch nhỏ (tính chất bất biến với phép tịnh tiến).
+\end{itemize}
+
+\subsection{Khối Quyết định: Lớp Làm phẳng (Flatten) và Lớp Kết nối Đầy đủ (Dense/Fully Connected)}
+Sau khi đi qua nhiều chu kỳ (Tích chập $\rightarrow$ ReLU $\rightarrow$ Gộp) để trích xuất từ đặc trưng cấp thấp (cạnh, góc) đến đặc trưng cấp cao (hình dáng vật thể), dữ liệu sẽ tiến vào giai đoạn phân loại:
+\begin{itemize}
+    \item \textbf{Lớp Flatten:} Duỗi khối dữ liệu đặc trưng 3D cuối cùng thành một véc-tơ 1 chiều dài.
+    \item \textbf{Lớp Dense (Fully Connected):} Đóng vai trò như bộ não tổng hợp. Lớp này nhận đầu vào là véc-tơ đặc trưng, liên kết các tổ hợp chi tiết với nhau để đưa ra dự đoán cuối cùng (ví dụ quyết định xem ảnh đó là con chó hay con mèo).
+    \item \textbf{Lớp Softmax (đối với bài toán đa lớp):} Nằm ở cuối mạng nơ-ron để chuyển đổi đầu ra thành xác suất phần trăm, đảm bảo tổng xác suất của các phân lớp bằng 1.
+\end{itemize}
+
+\section{Các kỹ thuật tối ưu hóa trong Huấn luyện}
+Để quá trình huấn luyện diễn ra ổn định và hiệu quả, mạng CNN thường áp dụng thêm các kỹ thuật:
+\begin{itemize}
+    \item \textbf{Dropout \& Batch Normalization:} Các trợ thủ giúp ổn định mô hình, tăng tốc độ hội tụ và đặc biệt là ngăn chặn hiện tượng Overfitting (học vẹt, học thuộc lòng dữ liệu huấn luyện).
+    \item \textbf{Chuẩn hóa dữ liệu đầu vào (Normalization):} Đưa các giá trị pixel từ khoảng $[0, 255]$ về khoảng $[0, 1]$ giúp mô hình học nhanh và ổn định hơn.
+    \item \textbf{One-hot Encoding:} Biến đổi nhãn dán (Label) thành các véc-tơ để giúp mô hình dễ dàng tính toán hàm mất mát (Loss) và cập nhật trọng số.
+\end{itemize}
+
+\section{Quy trình học (Hierarchical Learning)}
+Một đặc điểm nổi bật của CNN (và Deep Learning nói chung) là toàn bộ quá trình trích xuất đặc trưng được mô hình tự động học từ dữ liệu thay vì được kỹ sư lập trình thủ công. Mạng sẽ học theo cấu trúc tầng bậc giống thị giác sinh học:
+\begin{itemize}
+    \item \textbf{Các lớp đầu:} Tìm đặc trưng cấp thấp (cạnh, góc).
+    \item \textbf{Các lớp giữa:} Hình thành các khối và hình dạng cơ bản.
+    \item \textbf{Các lớp cuối:} Lắp ghép thành các vật thể phức tạp và toàn vẹn.
+\end{itemize}
+
+\end{document}
