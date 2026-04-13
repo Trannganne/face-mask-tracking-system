@@ -1,1 +1,13 @@
+train: ../images/train
+val: ../images/valid
+test: ../images/test
 
+nc: 3
+names: ["mask_weared_incorrect", "with_mask", "without_mask"]
+
+roboflow:
+  workspace: deep-learning-hwsxj
+  project: yolo-mask-detection-mr7ta
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/deep-learning-hwsxj/yolo-mask-detection-mr7ta/dataset/2
