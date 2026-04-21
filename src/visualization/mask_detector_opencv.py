@@ -1,80 +1,111 @@
+import torch
 import cv2
-import numpy as np
-from tensorflow.keras.models import load_model
-import urllib.request
-from pathlib import Path
+import time
+from PIL import Image
+from torchvision import transforms
+from facenet_pytorch import MTCNN
+import soundfile as sf
 
-class MaskDetectorOpenCV:
-    def __init__(self, 
-                 model_path: str = "../../models/mask_detector.h5",
-                 face_conf: float = 0.5,
-                 mask_conf: float = 0.5,
-                 frame_resize: int = 600):
-        
-        self.face_conf = face_conf
-        self.mask_conf = mask_conf
-        self.frame_resize = frame_resize
+# Lưu ý: Cần có class MaskDetectionCNN trong cùng file 
+# hoặc import từ file model 
 
-        print("[INFO] Đang load mask model...")
-        self.maskNet = load_model(model_path)
+def process_video_pipeline(model_path, video_input, video_output='output.mp4'):
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    
+    # 1. Khởi tạo và Load Model đã train
+    # Giả sử MaskDetectionCNN đã được định nghĩa ở trên
+    model = MaskDetectionCNN(num_classes=3)
+    model.load_state_dict(torch.load(model_path, map_location=device))
+    model.to(device)
+    model.eval()
 
-        # DNN Face Detector
-        self.face_detector_dir = Path("src/visualization/face_detector")
-        self.prototxt = self.face_detector_dir / "deploy.prototxt"
-        self.weights = self.face_detector_dir / "res10_300x300_ssd_iter_140000.caffemodel"
+    # 2. Khởi tạo Face Detector (MTCNN) và Tracker
+    mtcnn = MTCNN(keep_all=True, device=device)
+    
+    # Giả định lớp PersonTracker đã được code bởi thành viên khác
+    from your_team_module import PersonTracker 
+    tracker = PersonTracker()
+    
+    # 3. Cấu hình Video I/O
+    cap = cv2.VideoCapture(video_input)
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    fps = int(cap.get(cv2.CAP_PROP_FPS))
+    width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    out = cv2.VideoWriter(video_output, fourcc, fps, (width, height))
 
-        self._download_if_needed()
-        self.faceNet = cv2.dnn.readNetFromCaffe(str(self.prototxt), str(self.weights))
+    # 4. Transform chuẩn hóa ảnh đầu vào cho model
+    transform = transforms.Compose([
+        transforms.Resize((128, 128)),
+        transforms.ToTensor(),
+        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+    ])
 
-    def _download_if_needed(self):
-        self.face_detector_dir.mkdir(parents=True, exist_ok=True)
-        if not self.prototxt.exists() or not self.weights.exists():
-            print("[INFO] Tự động tải DNN Face Detector...")
-            urllib.request.urlretrieve(
-                "https://raw.githubusercontent.com/opencv/opencv/master/samples/dnn/face_detector/deploy.prototxt",
-                str(self.prototxt))
-            urllib.request.urlretrieve(
-                "https://github.com/opencv/opencv_3rdparty/raw/dnn_samples_face_detector_20170830/res10_300x300_ssd_iter_140000.caffemodel",
-                str(self.weights))
-            print("[INFO] Tải DNN Face Detector xong!")
+    class_names = ['mask_weared_incorrect', 'with_mask', 'without_mask']
+    colors = [(0, 165, 255), (0, 255, 0), (0, 0, 255)] # Cam, Xanh, Đỏ
 
-    def detect(self, frame: np.ndarray):
-        h, w = frame.shape[:2]
-        scale = self.frame_resize / max(h, w)
-        resized = cv2.resize(frame, (int(w * scale), int(h * scale)))
+    start_time = time.time()
+    frame_count = 0
 
-        blob = cv2.dnn.blobFromImage(resized, 1.0, (300, 300), (104.0, 177.0, 123.0))
-        self.faceNet.setInput(blob)
-        detections = self.faceNet.forward()
+    print("🎬 Đang xử lý video...")
+    while cap.isOpened():
+        ret, frame = cap.read()
+        if not ret: break
 
-        results = []
-        for i in range(detections.shape[2]):
-            conf = detections[0, 0, i, 2]
-            if conf > self.face_conf:
-                box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
-                (x1, y1, x2, y2) = box.astype("int")
-                x1 = max(0, x1)
-                y1 = max(0, y1)
-                x2 = min(w - 1, x2)
-                y2 = min(h - 1, y2)
+        img_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        current_time = time.time() - start_time
+        frame_count += 1
 
-                face_crop = frame[y1:y2, x1:x2]
-                if face_crop.size == 0:
-                    continue
+        # BƯỚC A: Tìm khuôn mặt
+        boxes, probs = mtcnn.detect(img_rgb)
+        detections = []
 
-                face_crop = cv2.resize(face_crop, (224, 224))
-                face_crop = face_crop.astype("float32") / 255.0
-                face_crop = np.expand_dims(face_crop, axis=0)
+        if boxes is not None:
+            for box, prob in zip(boxes, probs):
+                if prob < 0.9: continue
+                
+                x1, y1, x2, y2 = map(int, box)
+                face = img_rgb[max(0, y1):y2, max(0, x1):x2]
+                if face.size == 0: continue
 
-                (mask_prob, no_mask_prob) = self.maskNet.predict(face_crop, verbose=0)[0]
+                # BƯỚC B: Dự đoán bằng CNN của bạn
+                face_pil = Image.fromarray(face)
+                face_tensor = transform(face_pil).unsqueeze(0).to(device)
 
-                label = "MASK" if mask_prob > self.mask_conf else "NO MASK"
-                conf_mask = mask_prob if label == "MASK" else no_mask_prob
+                with torch.no_grad():
+                    output = model(face_tensor)
+                    class_id = torch.argmax(output).item()
+                    conf = torch.softmax(output, dim=1)[0][class_id].item()
 
-                results.append({
-                    "bbox": (x1, y1, x2, y2),
-                    "label": label,
-                    "confidence": float(conf_mask),
-                    "mask_prob": float(mask_prob)
-                })
-        return results
+                detections.append(([x1, y1, x2, y2], conf, class_id))
+
+        # BƯỚC C: Cập nhật Tracking (Hàm này do người khác viết)
+        tracked_objects = tracker.update(detections, current_time)
+
+        # BƯỚC D: Vẽ kết quả lên Frame
+        for obj in tracked_objects:
+            track_id = obj['track_id']
+            bx1, by1, bx2, by2 = map(int, obj['bbox'])
+            cid = obj['class_id']
+            no_mask_t = obj['mask_time']
+            warn = obj['warning']
+
+            color = colors[cid]
+            cv2.rectangle(frame, (bx1, by1), (bx2, by2), color, 2)
+            cv2.putText(frame, f"ID:{track_id} {class_names[cid]}", (bx1, by1-10),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
+
+            if cid == 2: # Không đeo khẩu trang
+                cv2.putText(frame, f"Time: {no_mask_t:.1f}s", (bx1, by2+20),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+            if warn:
+                cv2.putText(frame, "WARNING!", (bx1, by2+40),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+
+        out.write(frame)
+        if frame_count % 30 == 0:
+            print(f"  Đã xử lý {frame_count} frames...")
+
+    cap.release()
+    out.release()
+    print(f"Hoàn thành! Video lưu tại: {video_output}")
