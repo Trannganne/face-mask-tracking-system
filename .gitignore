@@ -205,3 +205,12 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Dữ liệu ảnh (Rất nặng, không đưa lên)
+dataset/
+D:/Dataset_Mask/
+*.zip
+
+# Model đã train (Thường > 50MB, nên để link Drive thay vì đẩy lên)
+*.pth
+*.h5
