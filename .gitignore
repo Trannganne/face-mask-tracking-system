@@ -212,5 +212,6 @@ D:/Dataset_Mask/
 *.zip
 
 # Model đã train (Thường > 50MB, nên để link Drive thay vì đẩy lên)
+*.pt
 *.pth
 *.h5
