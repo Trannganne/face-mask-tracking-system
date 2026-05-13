@@ -1,6 +1,6 @@
-train: ../images/train
-val: ../images/valid
-test: ../images/test
+train: images/train
+val: images/val
+test: images/test
 
 nc: 3
 names: ["mask_weared_incorrect", "with_mask", "without_mask"]
