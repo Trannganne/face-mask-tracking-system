@@ -1,1 +1,7 @@
-
+torch
+torchvision
+facenet-pytorch
+deep-sort-realtime
+opencv-python
+pillow
+soundfile
