@@ -1,1 +1,614 @@
+% !TEX program = xelatex
+\documentclass[a4paper,12pt]{article}
 
+\usepackage{float}
+\usepackage[vietnamese]{babel}
+\usepackage{tikz}
+\usepackage{geometry}
+\usepackage{fontspec} 
+\usepackage{graphicx} 
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage[table,xcdraw]{xcolor} % Giúp đổ màu thanh tiêu đề bảng
+
+% --- KHAI BÁO BIBLATEX ---
+\usepackage[style=numeric, backend=biber]{biblatex} 
+\addbibresource{tai-lieu.bib} % Gọi file chứa nguồn tham khảo
+
+% --- ĐỒNG BỘ SỐ HIỆU BẢNG THEO CHƯƠNG (CẤP SECTION) ---
+\usepackage{chngcntr}
+\counterwithin{table}{section} % Buộc bộ đếm table phụ thuộc vào section (Chương)
+
+% -------------------------
+\setmainfont{Times New Roman} 
+
+\geometry{
+    left=3.0cm,  
+    right=2.0cm, 
+    top=2.5cm,
+    bottom=2.5cm
+}
+
+\begin{document}
+
+% ==================== TRANG 1: TRANG BÌA ====================
+\begin{titlepage}
+
+% Vẽ khung Trang 1
+\begin{tikzpicture}[remember picture, overlay]
+\draw[line width=2pt] ([xshift=2cm,yshift=-2cm]current page.north west) rectangle ([xshift=-1.5cm,yshift=2cm]current page.south east);
+\draw[line width=0.8pt] ([xshift=2.15cm,yshift=-2.15cm]current page.north west) rectangle ([xshift=-1.35cm,yshift=2.15cm]current page.south east);
+\end{tikzpicture}
+
+\begin{center}
+{\fontsize{13pt}{16pt}\selectfont \textbf{TRƯỜNG ĐẠI HỌC CÔNG THƯƠNG THÀNH PHỐ HỒ CHÍ MINH}} \\
+{\fontsize{14pt}{17pt}\selectfont \textbf{KHOA CÔNG NGHỆ THÔNG TIN}} \\
+
+\vspace{0.5cm}
+\rule{5cm}{1pt} 
+\vspace{1.5cm} 
+
+\includegraphics[width=4cm]{logo.jpg} 
+
+\vspace{1.5cm}
+{\fontsize{16pt}{20pt}\selectfont \textbf{BÁO CÁO ĐỒ ÁN MÔN HỌC}} \\
+{\fontsize{18pt}{22pt}\selectfont \textbf{DEEP LEARNING}} \\
+\vspace{1.5cm}
+
+\parbox{14cm}{\centering 
+    {\fontsize{16pt}{22pt}\selectfont \textbf{ĐỀ TÀI:}} \\[0.5em]
+    {\fontsize{16pt}{22pt}\selectfont \textbf{ỨNG DỤNG MẠNG NƠ-RON TÍCH CHẬP (CNN)\\ VÀ DEEPSORT TRONG HỆ THỐNG NHẬN DIỆN,\\ THEO DÕI VÀ CẢNH BÁO ĐEO KHẨU TRANG\\ THỜI GIAN THỰC}}
+}
+\vspace{2.5cm} 
+
+\begin{flushleft}
+\hspace{3cm} 
+\begin{tabular}{ll}
+\textbf{Giảng viên hướng dẫn:} & ThS. Huỳnh Thái Học \\
+\end{tabular}
+\end{flushleft}
+
+\vfill
+{\fontsize{12pt}{14pt}\selectfont TP. HỒ CHÍ MINH, NĂM 2026}
+\end{center}
+
+\end{titlepage} 
+
+
+% ==================== TRANG 2: Sau bìa ====================
+\newpage
+\thispagestyle{empty}
+% Vẽ khung Trang 2
+\begin{tikzpicture}[remember picture, overlay]
+\draw[line width=2pt] ([xshift=2cm,yshift=-2cm]current page.north west) rectangle ([xshift=-1.5cm,yshift=2cm]current page.south east);
+\draw[line width=0.8pt] ([xshift=2.15cm,yshift=-2.15cm]current page.north west) rectangle ([xshift=-1.35cm,yshift=2.15cm]current page.south east);
+\end{tikzpicture}
+
+\begin{center}
+{\fontsize{13pt}{16pt}\selectfont \textbf{TRƯỜNG ĐẠI HỌC CÔNG THƯƠNG THÀNH PHỐ HỒ CHÍ MINH}} \\
+{\fontsize{14pt}{17pt}\selectfont \textbf{KHOA CÔNG NGHỆ THÔNG TIN}} \\
+
+\vspace{0.5cm}
+\rule{5cm}{1pt} 
+\vspace{1.5cm} 
+
+\includegraphics[width=4cm]{logo.jpg} 
+
+\vspace{1.5cm}
+{\fontsize{16pt}{20pt}\selectfont \textbf{BÁO CÁO ĐỒ ÁN MÔN HỌC}} \\
+{\fontsize{18pt}{22pt}\selectfont \textbf{DEEP LEARNING}} \\
+\vspace{1.5cm}
+
+\parbox{15cm}{\centering 
+    {\fontsize{16pt}{22pt}\selectfont \textbf{ĐỀ TÀI:}} \\[0.5em]
+    {\fontsize{16pt}{22pt}\selectfont \textbf{ỨNG DỤNG MẠNG NƠ-RON TÍCH CHẬP (CNN) \\ VÀ DEEPSORT TRONG HỆ THỐNG NHẬN DIỆN,\\ THEO DÕI VÀ CẢNH BÁO ĐEO KHẨU TRANG \\ THỜI GIAN THỰC}}
+}
+\vspace{2.5cm} 
+
+\begin{flushleft}
+\hspace{3cm} 
+\begin{tabular}{ll}
+\textbf{Giảng viên hướng dẫn:} & ThS. Huỳnh Thái Học \\
+\textbf{Sinh viên thực hiện:}   & Trần Thị Kim Ngân -- 2001230554 \\
+                               & Phạm Nguyễn Hồng Ngọc \\
+                               & Trần Quốc Trường \\
+                               & Nguyễn Duy Hưng \\
+\end{tabular}
+\end{flushleft}
+
+\vfill
+{\fontsize{12pt}{14pt}\selectfont TP. HỒ CHÍ MINH, NĂM 2026}
+\end{center}
+
+% ==================== TRANG 3 ====================
+\newpage
+\begin{center}
+    {\fontsize{16pt}{20pt}\selectfont \textbf{LỜI CẢM ƠN}}
+\end{center}
+
+\vspace{1cm}
+
+\setlength{\parindent}{1cm} 
+\fontsize{13pt}{18pt}\selectfont 
+
+Lời đầu tiên, nhóm 11 xin gửi lời cảm ơn chân thành đến Ban giám hiệu Trường Đại học Công thương TP.HCM cùng Khoa Công nghệ Thông tin đã tạo môi trường học tập tốt nhất cho chúng em trong suốt thời gian qua.
+
+Đặc biệt, nhóm xin gửi lời tri ân sâu sắc đến ThS. Huỳnh Thái Học -- người thầy đã trực tiếp hướng dẫn, dành nhiều thời gian tâm huyết để dẫn dắt nhóm qua các buổi thực hành. Nhờ có sự định hướng tỉ mỉ của các thầy, nhóm đã tiếp cận môn học dưới góc nhìn toàn diện, nâng cao tư duy thực chiến và hiểu rõ hơn tính thiết thực của kiến thức vào thực tế.
+
+Do giới hạn về mặt thời gian và trải nghiệm thực tế, bài báo cáo khó lòng hoàn hảo tuyệt đối. Nhóm 11 rất hy vọng sẽ nhận được sự lượng thứ cùng những nhận xét, đóng góp quý báu từ thầy để hoàn thiện năng lực của bản thân trong tương lai.
+
+\textit{Kính chúc các thầy luôn mạnh khỏe, hạnh phúc và thành công trên con đường giáo dục!}
+
+\vspace{1.5cm}
+
+\begin{flushright}
+\begin{tabular}{l} 
+    \textbf{Nhóm 11 xin chân thành cảm ơn!} \\
+    \textit{(Tập thể thành viên nhóm)} \\[0.5em]
+    \textit{Trần Thị Kim Ngân -- 2001230554} \\
+    \textit{Phạm Nguyễn Hồng Ngọc -- 2001230554} \\
+    \textit{Trần Quốc Trường -- 2001230554} \\
+    \textit{Nguyễn Duy Hưng -- 2001230554}
+\end{tabular}
+\hspace{1cm} 
+\end{flushright}
+
+% ==================== TRANG 4: MỤC LỤC TỰ ĐỘNG ====================
+\newpage
+
+\renewcommand{\contentsname}{\begin{center}\Large\textbf{MỤC LỤC}\end{center}}
+\vspace{1cm}
+\tableofcontents
+
+% ==================== LỜI MỞ ĐẦU ====================
+\newpage
+\begin{center}
+    {\fontsize{16pt}{20pt}\selectfont \textbf{LỜI MỞ ĐẦU}}
+\end{center}
+
+\vspace{1cm}
+\setlength{\parindent}{1cm} 
+\fontsize{13pt}{18pt}\selectfont 
+
+Trong những năm gần đây, Trí tuệ nhân tạo (AI) đã và đang khẳng định vai trò cốt lõi trong cuộc cách mạng công nghệ toàn cầu. Sự bùng nổ về năng lượng tính toán của phần cứng (GPU) cùng với lượng dữ liệu số khổng lồ được thu thập đã đưa Học máy (Machine Learning) tiến một bước dài, tạo tiền đề cho sự ra đời của Học sâu (Deep Learning). Các mô hình Học sâu đã giúp máy tính thực thi được những tác vụ vô cùng phức tạp với độ chính xác vượt trội, từ phân loại hàng ngàn vật thể, xử lý ngôn ngữ tự nhiên cho đến các hệ thống tự hành. Nhờ đó, việc ứng dụng Học sâu vào các hệ thống camera giám sát thông minh (Smart Surveillance) đã trở thành một xu hướng tất yếu trong kỷ nguyên số.\\
+
+Trên thực tế, công tác đảm bảo an ninh, trật tự tại các khu vực đặc thù và có tính chất rủi ro cao như hệ thống ngân hàng, phòng giao dịch hay các điểm rút tiền tự động (ATM) luôn là bài toán thách thức đối với các nhà quản lý. Đây là những nơi thường xuyên diễn ra các giao dịch tài chính lớn, dễ trở thành mục tiêu hàng đầu của tội phạm cướp giật, trộm cắp tài sản. Thủ đoạn phổ biến của các đối tượng này là cố tình che giấu nhân dạng bằng cách đeo khẩu trang, đội mũ kín hoặc che mặt trước khi bước vào khu vực giao dịch nhằm vô hiệu hóa khả năng nhận diện của hệ thống camera truyền thống. Mặc dù các camera hiện nay có mật độ dày đặc, nhưng chúng chỉ hoạt động theo cơ chế ghi hình thụ động và phụ thuộc hoàn toàn vào sức người để theo dõi màn hình, dẫn đến việc khó phát hiện và ngăn chặn kịp thời các hành vi nghi vấn diễn ra trong thời gian ngắn.\\
+
+Để giải quyết triệt để hạn chế trên, việc xây dựng một hệ thống giám sát chủ động, có khả năng tự động phân tích hành vi che mặt và đưa ra cảnh báo tức thời là vô cùng cấp thiết. Xuất phát từ nhu cầu thực tiễn đó, nhóm 11 đã tập trung nghiên cứu, phát triển đề tài "Ứng dụng mạng nơ-ron tích chập (CNN) và DeepSORT trong hệ thống nhận diện, theo dõi và cảnh báo đeo khẩu trang thời gian thực". Điểm đột phá của đề tài là việc kết hợp mô hình thị giác máy tính dựa trên mạng nơ-ron tích chập (CNN) để phát hiện trạng thái khuôn mặt, kết hợp với thuật toán theo dõi đa mục tiêu DeepSORT nhằm duy trì định danh, định vị quỹ đạo và thiết lập logic đếm thời gian. Hệ thống sẽ tự động kích hoạt tín hiệu cảnh báo đến bộ phận an ninh ngay khi phát hiện có đối tượng cố tình che mặt liên tục vượt quá khung thời gian an toàn quy định.\\
+
+Nội dung chính của báo cáo đồ án được kết cấu thành 4 chương như sau:
+\begin{itemize}
+    \item \textbf{Chương 1: Tổng quan về đề tài} -- Giới thiệu bối cảnh, lý do chọn đề tài, mục tiêu nghiên cứu, đối tượng và phạm vi tiếp cận của hệ thống.
+    \item \textbf{Chương 2: Cơ sở lý thuyết} -- Trình bày nền tảng khoa học về mạng nơ-ron tích chập (CNN) trong bài toán phát hiện vật thể, nguyên lý hoạt động của thuật toán theo dõi đối tượng DeepSORT và cơ chế lọc Kalman.
+    \item \textbf{Chương 3: Thiết kế và thực nghiệm hệ thống} -- Mô tả quy trình thu thập, tiền xử lý dữ liệu, quá trình huấn luyện mô hình và xây dựng luồng xử lý logic cảnh báo theo thời gian thực qua Webcam.
+    \item \textbf{Chương 4: Kết quả và phương hướng phát triển} -- Đánh giá hiệu năng thực nghiệm của mô hình qua các chỉ số kỹ thuật, nhìn nhận những mặt đạt được, hạn chế và đề xuất giải pháp tối ưu hệ thống trong tương lai.
+\end{itemize}
+
+\newpage 
+% ==================== PHẦN NỘI DUNG CHÍNH ====================
+
+\section{CHƯƠNG 1: MỞ ĐẦU} 
+
+\subsection{Lý do chọn đề tài}
+Trong bối cảnh an ninh tại các ngân hàng và trung tâm tài chính ngày càng trở nên phức tạp, việc phát hiện và ngăn chặn kịp thời các đối tượng cố tình che giấu nhân dạng (đeo khẩu trang, kính râm, mũ kín) là rất cần thiết. Tuy nhiên, các hệ thống camera giám sát hiện nay chủ yếu chỉ ghi hình thụ động, thiếu khả năng phân tích và cảnh báo chủ động thời gian thực. Nhân viên an ninh khó có thể theo dõi liên tục nhiều màn hình cùng lúc, dẫn đến bỏ sót các hành vi đáng ngờ.\\
+Với sự phát triển mạnh mẽ của Trí tuệ nhân tạo, đặc biệt là Thị giác máy tính, việc áp dụng Mạng nơ-ron tích chập (CNN) để nhận diện trạng thái đeo khẩu trang và DeepSORT để theo dõi, định danh và tính toán thời gian che mặt của đối tượng đã trở thành giải pháp hiệu quả. Khi thời gian che mặt vượt quá ngưỡng cho phép (ví dụ: 20 giây), hệ thống sẽ tự động kích hoạt cảnh báo giúp lực lượng an ninh kịp thời can thiệp.\\
+Xuất phát từ nhu cầu thực tiễn nâng cao năng lực giám sát an ninh chủ động tại các tổ chức tín dụng, nhóm quyết định thực hiện đề tài: “Ứng dụng Mạng nơ-ron tích chập (CNN) và DeepSORT trong hệ thống nhận diện, theo dõi và cảnh báo đeo khẩu trang thời gian thực”.
+
+\subsection{Mục tiêu nghiên cứu}
+\subsubsection{Mục tiêu tổng quát}
+Nghiên cứu, thiết kế và xây dựng thành công một hệ thống giám sát an ninh thông minh có khả năng tự động nhận diện hành vi đeo khẩu trang/che mặt, theo dõi quỹ đạo di chuyển của đối tượng trong thời gian thực và tự động phát tín hiệu cảnh báo đến bộ phận quản lý khi đối tượng vi phạm quy định về thời gian an toàn tại các khu vực trọng yếu như ngân hàng.
+
+\subsubsection{Mục tiêu cụ thể}
+\begin{itemize}
+    \item \textbf{Về mặt lý thuyết:} Nghiên cứu và nắm vững nguyên lý hoạt động của các kiến trúc mạng nơ-ron tích chập (CNN) trong bài toán phát hiện vật thể (Object Detection); làm chủ thuật toán theo dõi đối tượng DeepSORT ứng dụng bộ lọc Kalman và mạng nhúng sâu (Deep Appearance Descriptor).
+    \item \textbf{Về mặt dữ liệu:} Thu thập, chuẩn hóa và gán nhãn bộ dữ liệu hình ảnh (Dataset) chất lượng cao bao gồm các trạng thái: đeo khẩu trang, không đeo khẩu trang, và các hành vi che mặt khác phù hợp với bối cảnh camera giám sát góc cao tại ngân hàng.
+    \item \textbf{Về mặt công nghệ:} Huấn luyện thành công mô hình CNN đạt độ chính xác cao ($Accuracy \ge 90\%$), tốc độ xử lý nhanh (FPS đáp ứng thời gian thực) trên các luồng video livestream trực tiếp. Tích hợp module DeepSORT để duy trì ID nhân dạng ổn định, không bị mất dấu ngay cả khi đối tượng bị che khuất tạm thời.
+    \item \textbf{Về mặt tính năng cảnh báo:} Phát triển thuật toán logic đếm thời gian (Timer) dựa trên ID của DeepSORT. Thiết lập hệ thống kích hoạt âm thanh/cảnh báo hiển thị trực quan khi một ID duy trì trạng thái che mặt liên tục quá thời gian cấu hình (ví dụ: 20 giây).
+    \item \textbf{Về mặt ứng dụng và thực nghiệm:} Đánh giá hiệu năng của mô hình thông qua môi trường mô phỏng bằng webcam thời gian thực; bước đầu phân tích, đo lường các chỉ số sai số (như tỷ lệ nhận diện sai, tỷ lệ báo động giả - False Alarm Rate) trong không gian phòng thí nghiệm, từ đó đề xuất định hướng tối ưu phần cứng và giải pháp triển khai hệ thống thực tế trong tương lai.
+\end{itemize}
+
+\newpage
+\section{CHƯƠNG 2: TỔNG QUAN CƠ SỞ LÝ THUYẾT}
+\subsection{Mạng nơ-ron tích chập (Convolutional Neural Network -- CNN)}
+
+Mạng nơ-ron tích chập (CNN) là một mô hình học sâu (\textit{deep learning}) được sử dụng rộng rãi để xử lý dữ liệu dạng hình ảnh, dựa trên cơ chế tổ chức sắp xếp của vỏ não thị giác ở động vật \cite{mohammadpour2022survey}. Mục tiêu thiết kế cốt lõi của kiến trúc này là tự động học hỏi một cách linh hoạt các cấu trúc phân cấp không gian của các đặc trưng, từ các dạng mẫu cấp thấp đến cấp cao. Mô hình này đã chứng minh được hiệu năng vượt trội trong nhiều tác vụ khác nhau, bao gồm nhận diện khuôn mặt, định danh vật thể và phát hiện biển báo giao thông -- đặc biệt là trong lĩnh vực robot và xe tự hành. Việc giảm thiểu số lượng tham số so với mạng nơ-ron nhân tạo (ANN) truyền thống là một trong những đặc điểm quan trọng nhất của CNN \cite{mohammadpour2022survey}.
+
+Mục đích chính của CNN là trích xuất và học các đặc trưng có giá trị từ dữ liệu đầu vào. Trong quy trình này, các lớp khởi đầu hoạt động như một tập hợp các bộ trích xuất đặc trưng tích chập (\textit{convolutional feature extractors}) dựa trên các bộ lọc (\textit{filters}) có khả năng tự học hỏi thông số. Các bộ lọc này hoạt động như một cửa sổ trượt (\textit{sliding window}) di chuyển liên tục trên từng vùng của dữ liệu hình ảnh đầu vào. Trong đó, khoảng cách dịch chuyển chồng lấp giữa các bước trượt được gọi là bước nhảy (\textit{stride}), và kết quả đầu ra thu được gọi là các bản đồ đặc trưng (\textit{feature maps}). 
+
+Các lõi tích chập (\textit{convolutional kernels}) cấu thành nên mỗi lớp trong mạng CNN và được sử dụng để tạo ra các bản đồ đặc trưng khác nhau. Các vùng nơ-ron lân cận sẽ được kết nối với một nơ-ron cụ thể thuộc bản đồ đặc trưng của lớp kế tiếp. Để tạo ra một bản đồ đặc trưng, lõi tích chập phải được chia sẻ trọng số trên toàn bộ các vị trí không gian của đầu vào. Sau khi các lớp tích chập (\textit{convolutional layers}) và lớp nén/gộp (\textit{pooling layers}) được thiết lập, một hoặc nhiều lớp kết nối đầy đủ (\textit{fully connected layers}) sẽ được sử dụng ở giai đoạn cuối để hoàn thiện tác vụ phân loại \cite{mohammadpour2022survey}.
+
+\subsubsection{Feature trong CNN} 
+Các feature (đặc trưng) được sử dụng để trích xuất thông tin từ ảnh đầu vào. Các feature này được học tự động từ dữ liệu và được sử dụng để giảm thiểu số lượng thông tin cần xử lý trong quá trình huấn luyện mạng. Các feature này có thể là các đường cạnh, các vùng sáng tối, các đường cong và các đối tượng phức tạp hơn. Các feature này được trích xuất thông qua các bộ lọc tích chập và được kết hợp lại để tạo thành các feature maps, đóng vai trò quan trọng trong việc phân loại ảnh.
+
+\subsubsection{Những lớp cơ bản của mạng CNN} 
+
+\textbf{Lớp tích chập (Convolutional Layer):} Đây là thành phần quan trọng nhất của toàn bộ mạng CNN. Các yếu tố cốt lõi trong lớp này bao gồm: filter (bộ lọc), stride (bước dịch), padding (phần đệm) và feature map (bản đồ đặc trưng).
+
+\begin{itemize}
+    \item \textbf{Filter (Kernel):} Mạng CNN sử dụng các filter để áp dụng vào từng vùng của ma trận hình ảnh. Các filter thường là một ma trận trọng số hai chiều (2D) giúp phát hiện các đặc trưng trong hình ảnh.\cite{fptai_cnn2026}
+    \item \textbf{Stride:} Là bước di chuyển của kernel trên ma trận đầu vào, xác định khoảng cách giữa các lần quét. Stride lớn sẽ tạo ra đầu ra nhỏ hơn.\cite{fptai_cnn2026}
+    \item \textbf{Padding:} Được sử dụng khi kích thước của filter không khớp với kích thước của hình ảnh đầu vào.\cite{fptai_cnn2026}
+    \item \textbf{Feature map:} Ma trận kết quả thu được sau khi filter quét qua toàn bộ ma trận ảnh đầu vào.
+\end{itemize}
+
+\textbf{Activation Layer:} Sau khi thực hiện phép tích chập, dữ liệu sẽ đi qua lớp kích hoạt để thêm tính phi tuyến vào mô hình. Hàm kích hoạt phổ biến nhất là ReLU (Rectified Linear Unit).\\
+\textbf{Pooling Layer:} Hay còn gọi là downsampling, có nhiệm vụ giảm chiều dữ liệu và giảm số lượng tham số trong đầu vào.\cite{fptai_cnn2026}\\
+\textbf{Fully-connected Layer:} Mỗi đầu vào được liên kết với đầu ra thông qua các trọng số có thể học được. Thông thường, lớp fully connected cuối cùng sẽ được theo sau bởi một bộ phân loại Softmax.\cite{mohammadpour2022survey}
+
+\subsection{Thuật toán theo dõi đối tượng đa mục tiêu DeepSORT}
+\subsubsection{Bài toán theo dõi đối tượng (Object Tracking)} 
+Bài toán theo dõi đối tượng đa mục tiêu (Multiple Object Tracking - MOT) là nhiệm vụ phát hiện nhiều đối tượng trong video, dự đoán quỹ đạo chuyển động và duy trì danh tính (ID) nhất quán qua các khung hình.
+
+\subsubsection{Bộ lọc Kalman (Kalman Filter)} 
+Bộ lọc Kalman là thành phần cốt lõi để mô hình hóa chuyển động của đối tượng trong không gian hai chiều. Nó dự đoán vị trí và vận tốc của đối tượng ở khung hình tiếp theo dựa trên trạng thái trước đó. Trong DeepSORT, không gian trạng thái thường là một vectơ cấu trúc 8 chiều:
+\[
+x = (u, v, a, h, u^\prime, v^\prime, a^\prime, h^\prime)
+\]
+Trong đó $(u, v)$ là tọa độ trung tâm, $a$ là tỷ lệ khung hình, $h$ là chiều cao, và các ký hiệu có dấu phẩy ($u^\prime, v^\prime, a^\prime, h^\prime$) biểu thị các vận tốc tương ứng. Bộ lọc Kalman thực hiện hai bước chính là \textbf{Predict} (Dự đoán vị trí mới) và \textbf{Update} (Cập nhật dữ liệu khi thu được đo lường thực tế từ module detection). Nó giúp duy trì quỹ đạo ổn định và xử lý hiệu quả các trường hợp đối tượng tạm thời bị che khuất ngắn hạn.
+
+\subsubsection{Thuật toán Hungary (Hungarian Algorithm)}
+Thuật toán Hungarian dùng để giải bài toán gán tối ưu. Nó ghép nối các detection mới với các track đang tồn tại sao cho tổng chi phí (được tính bằng khoảng cách Mahalanobis và khoảng cách Cosine) là nhỏ nhất.
+
+\subsubsection{Mạng nhúng sâu (Deep Appearance Descriptor)}
+Deep Appearance Descriptor là một mạng CNN được huấn luyện để trích xuất vector embedding mô tả ngoại hình của đối tượng nhằm hỗ trợ nhận diện lại đối tượng khi bị che khuất ngắn hạn.
+
+\newpage
+\section{CHƯƠNG 3: THIẾT KẾ VÀ XÂY DỰNG}
+\subsection{Kiến trúc tổng quan}
+Hệ thống được thiết kế theo kiến trúc pipeline đa tầng, kết hợp các kỹ thuật học sâu (\textit{deep learning}) với thuật toán theo dõi đối tượng thời gian thực. Luồng xử lý chính bao gồm năm giai đoạn tuần tự được mô tả chi tiết trong Bảng \ref{tab:pipeline_he_thong}.
+
+\begin{table}[htbp]
+\centering
+\caption{Các giai đoạn xử lý tuần tự trong kiến trúc pipeline của hệ thống}
+\label{tab:pipeline_he_thong}
+\definecolor{headerblue}{RGB}{27, 79, 114} 
+
+\begin{tabularx}{\textwidth}{|c|l|X|}
+\hline
+\rowcolor{headerblue} 
+\textbf{\color{white}Giai đoạn} & \textbf{\color{white}Module} & \textbf{\color{white}Chức năng} \\ \hline
+1 & Video đầu vào & Nhận luồng video từ webcam, file video (.mp4) hoặc ảnh tĩnh thông qua OpenCV (\texttt{cv2.VideoCapture}). \\ \hline
+2 & MTCNN & Phát hiện và định vị khuôn mặt trong từng frame, lọc theo ngưỡng confidence $\ge 0.9$, trả về bounding box ($x_1, y_1, x_2, y_2$). \\ \hline
+3 & MaskCNN & Phân loại khuôn mặt vừa phát hiện thành một trong ba trạng thái: Đeo đúng (\texttt{with\_mask}), Đeo sai (\texttt{mask\_weared\_incorrect}), Không đeo (\texttt{without\_mask}). \\ \hline
+4 & DeepSORT & Gán và duy trì Track ID nhất quán cho từng người qua nhiều frame liên tục, sử dụng phương pháp kết hợp IoU và \textit{appearance embedding}. \\ \hline
+5 & Timer \& Alert & Đếm tích lũy thời gian đeo khẩu trang đúng cách theo từng Track ID; kích hoạt cảnh báo trực quan khi vượt ngưỡng 10 giây. \\ \hline
+\end{tabularx}
+\end{table}
+
+Khi phát hiện đối tượng vi phạm (đeo khẩu trang đúng cách quá 10 giây mà hệ thống muốn cảnh báo, hoặc không đeo), hệ thống hiển thị banner cảnh báo màu đỏ trực tiếp lên frame video với thông tin ID người dùng và thời gian vi phạm. Sơ đồ luồng xử lý chi tiết được thể hiện trong Hình 3.1.
+
+\includegraphics{luongxuly.png}
+\subsection{Xây dựng và tiền xử lý bộ dữ liệu (dataset)}
+\subsubsection{Thu thập dữ liệu}
+Bộ dữ liệu được sử dụng trong đề tài là \textit{Face Mask Dataset} (\texttt{FMD\_DATASET}) do Shiekh Burhan công bố trên nền tảng Kaggle (\url{kaggle.com/datasets/shiekhburhan/face-mask-dataset}). Dataset được tải về tự động trong môi trường Google Colab bằng Kaggle API thông qua dòng lệnh sau:
+
+\begin{verbatim}
+!kaggle datasets download -d shiekhburhan/face-mask-dataset -p /content/dataset --unzip
+\end{verbatim}
+
+Dataset được tổ chức theo cấu trúc thư mục chuẩn \texttt{ImageFolder} của PyTorch với ba nhãn lớp tương ứng ba trạng thái đeo khẩu trang, chi tiết cấu trúc được thể hiện trong Bảng \ref{tab:dataset_classes}.
+
+\begin{table}[H] % <--- SỬA THÀNH [H] ĐỂ ÉP BẢNG ĐỨNG YÊN TẠI ĐÂY
+\centering
+\caption{Cấu trúc phân lớp và mô tả các nhãn trong bộ dữ liệu huấn luyện}
+\label{tab:dataset_classes}
+\definecolor{headerblue}{RGB}{27, 79, 114} 
+
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\rowcolor{headerblue} 
+\textbf{\color{white}Tên thư mục (Class)} & \textbf{\color{white}Nhãn hiển thị} & \textbf{\color{white}Mô tả} \\ \hline
+\texttt{mask\_weared\_incorrect} & Đeo sai (Class 0) & Người đeo khẩu trang không đúng cách: hở mũi, hở cằm, đeo lệch hoặc che mặt bằng vật khác. \\ \hline
+\texttt{with\_mask} & Đeo đúng (Class 1) & Người đeo khẩu trang đúng cách, che kín mũi và miệng. \\ \hline
+\texttt{without\_mask} & Không đeo (Class 2) & Người không đeo khẩu trang, khuôn mặt hoàn toàn lộ ra. \\ \hline
+\end{tabularx}
+\end{table}
+
+Để đảm bảo cân bằng dữ liệu trong quá trình huấn luyện, hệ thống áp dụng hàm \texttt{limit\_dataset\_per\_class()} để giới hạn số lượng ảnh tối đa mỗi lớp không vượt quá 3.500 mẫu. Nếu một lớp có nhiều hơn ngưỡng này, dữ liệu sẽ được lấy mẫu ngẫu nhiên (\textit{random sampling}) để tránh hiện tượng mất cân bằng lớp.
+Toàn bộ dataset được chia theo tỷ lệ 70-15-15 bao gồm:
+\begin{itemize}
+    \item \textbf{70\% --- Tập huấn luyện (Training set):} dùng để cập nhật tham số mô hình.
+    \item \textbf{15\% --- Tập kiểm định (Validation set):} đánh giá mô hình sau mỗi epoch.
+    \item \textbf{15\% --- Tập kiểm tra (Test set):} đánh giá cuối cùng sau khi hoàn thành huấn luyện.
+\end{itemize}
+\subsubsection{Gán nhãn dữ liệu}
+Dataset \texttt{FMD\_DATASET} đã được gán nhãn sẵn thông qua cấu trúc thư mục theo chuẩn \texttt{ImageFolder}. Mỗi thư mục con tương ứng với một nhãn lớp; PyTorch tự động ánh xạ tên thư mục sang chỉ số số nguyên theo thứ tự alphabet thông qua thuộc tính \texttt{full\_dataset.class\_to\_idx} như sau:
+
+\begin{verbatim}
+full_dataset.class_to_idx:
+    'mask_weared_incorrect' -> 0
+    'with_mask'             -> 1
+    'without_mask'          -> 2
+\end{verbatim}
+
+Các kỹ thuật tăng cường dữ liệu (\textit{Data Augmentation}) được áp dụng riêng cho tập huấn luyện nhằm tăng tính đa dạng và khả năng tổng quát hóa của mô hình, tránh hiện tượng quá khớp (\textit{overfitting}). Chi tiết các cấu hình tham số được mô tả cụ thể trong Bảng \ref{tab:data_augmentation}.
+
+\begin{table}[H] % Ép bảng đứng cố định tại đây để tránh chen dòng
+\centering
+\caption{Các kỹ thuật tăng cường dữ liệu và cấu hình tham số áp dụng cho tập huấn luyện}
+\label{tab:data_augmentation}
+\definecolor{headerblue}{RGB}{27, 79, 114} 
+
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\rowcolor{headerblue} 
+\textbf{\color{white}Kỹ thuật Augmentation} & \textbf{\color{white}Tham số} & \textbf{\color{white}Mục đích} \\ \hline
+Resize & $128 \times 128$ pixels & Chuẩn hóa kích thước đầu vào đồng nhất. \\ \hline
+RandomHorizontalFlip & $p = 0.5$ (mặc định) & Tăng cường biến thể góc nhìn ngang của khuôn mặt. \\ \hline
+RandomRotation & $\pm 15$ độ & Mô phỏng các trạng thái khuôn mặt nghiêng. \\ \hline
+ColorJitter & \parbox[t]{3.5cm}{brightness=0.2,\\ contrast=0.2,\\ saturation=0.2} & Mô phỏng điều kiện ánh sáng khác nhau trong thực tế giám sát. \\ \hline
+Normalize (ImageNet) & \parbox[t]{3.5cm}{mean=[0.485, 0.456, 0.406],\\ std=[0.229, 0.224, 0.225]} & Chuẩn hóa phân phối pixel về cùng thang đo giúp mô hình hội tụ nhanh hơn. \\ \hline
+\end{tabularx}
+\end{table}
+
+Tập \textit{validation} và \textit{test} chỉ áp dụng hai kỹ thuật thiết yếu là \texttt{Resize} và \texttt{Normalize}, hoàn toàn không sử dụng các kỹ thuật \textit{augmentation} biến đổi hình học hay màu sắc. Điều này đảm bảo tính khách quan và trung thực khi đánh giá hiệu năng thực tế của mô hình trên những tập dữ liệu chưa từng được nhìn thấy trước đó.
+
+\subsection{Quá trình huấn luyện mô hình CNN}
+\subsubsection{Môi trường cấu hình}
+Quá trình huấn luyện được thực hiện trên nền tảng Google Colaboratory (Google Colab) với GPU Tesla T4 do Google cung cấp miễn phí. Tập dữ liệu được lưu trữ trên Google Drive và mount vào Colab runtime thông qua API:
+
+\begin{verbatim}
+from google.colab import drive
+drive.mount('/content/drive')
+\end{verbatim}
+
+Cấu hình phần cứng và phần mềm môi trường huấn luyện được thống kê chi tiết trong Bảng \ref{tab:hardware_software_config}:
+
+\begin{table}[H] % Ép bảng cố định tại đây để tránh lỗi nhảy chữ
+\centering
+\caption{Cấu hình phần cứng và phần mềm môi trường huấn luyện}
+\label{tab:hardware_software_config}
+\definecolor{headerblue}{RGB}{27, 79, 114} % Màu xanh đậm đồng bộ với thiết kế
+
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\rowcolor{headerblue} 
+\textbf{\color{white}Thành phần} & \textbf{\color{white}Chi tiết} \\ \hline
+Nền tảng & Google Colaboratory (Colab). \\ \hline
+GPU & NVIDIA Tesla T4 (15 GB VRAM). \\ \hline
+CPU & Intel Xeon (2 vCPU). \\ \hline
+RAM & 12.7 GB. \\ \hline
+Ngôn ngữ lập trình & Python 3.10+. \\ \hline
+Deep Learning Framework & PyTorch 2.4+ / TorchVision 0.19+. \\ \hline
+Face Detection & facenet-pytorch (MTCNN, InceptionResnetV1). \\ \hline
+Object Tracking & deep-sort-realtime. \\ \hline
+Xử lý ảnh / Video & OpenCV (\texttt{cv2}), Pillow (\texttt{PIL}). \\ \hline
+Khoa học dữ liệu & NumPy 2.x, Matplotlib, Seaborn, scikit-learn. \\ \hline
+\end{tabularx}
+\end{table}
+
+Toàn bộ thư viện được cài đặt bằng \texttt{pip} tại thời điểm khởi động runtime:
+
+\begin{verbatim}
+!pip install torch torchvision opencv-python pillow
+!pip install deep-sort-realtime facenet-pytorch soundfile
+\end{verbatim}
+\subsubsection{Kiến trúc mô hình MaskCNN}
+
+Mô hình phân loại khẩu trang \texttt{MaskCNN} được xây dựng từ đầu (\textit{from scratch}) bằng PyTorch, gồm bốn khối tích chập (\textit{Convolutional Block}) tuần tự, một lớp \textit{Global Average Pooling} và ba lớp \textit{Fully Connected}. Chi tiết cấu trúc từng tầng được thống kê cụ thể trong Bảng \ref{tab:maskcnn_architecture}.
+\begin{table}[H] % Ép bảng đứng cố định tại vị trí này để tránh lỗi chen dòng
+\centering
+\caption{Cấu trúc chi tiết các lớp và khối chức năng trong mô hình MaskCNN}
+\label{tab:maskcnn_architecture}
+
+\definecolor{headerblue}{RGB}{27, 79, 114} % Màu xanh đậm đồng bộ thiết kế
+
+% Chỉnh thành 4 cột: Cột 2 dùng p{7.5cm} để ép xuống dòng tự động cho các khối phức tạp
+\begin{tabularx}{\textwidth}{|l|p{7.5cm}|l|l|}
+\hline
+\rowcolor{headerblue} 
+\textbf{\color{white}Layer} & \textbf{\color{white}Operation} & \textbf{\color{white}Output Shape} & \textbf{\color{white}Filters / Units} \\ \hline
+Input Layer & Raw RGB Image & 128 $\times$ 128 $\times$ 3 & 3 channels \\ \hline
+Conv Block 1 & Conv2D(3$\rightarrow$32) + BN + ReLU + MaxPool(2) + Dropout(0.25) & 64 $\times$ 64 $\times$ 32 & 32 filters \\ \hline
+Conv Block 2 & Conv2D(32$\rightarrow$64) + BN + ReLU + MaxPool(2) + Dropout(0.25) & 32 $\times$ 32 $\times$ 64 & 64 filters \\ \hline
+Conv Block 3 & Conv2D(64$\rightarrow$128) + BN + ReLU + MaxPool(2) + Dropout(0.25) & 16 $\times$ 16 $\times$ 128 & 128 filters \\ \hline
+Conv Block 4 & Conv2D(128$\rightarrow$192) + BN + ReLU + MaxPool(2) + Dropout(0.3) & 8 $\times$ 8 $\times$ 192 & 192 filters \\ \hline
+Global Average Pooling & AdaptiveAvgPool2d(1,1) & 1 $\times$ 1 $\times$ 192 & - \\ \hline
+Fully Connected & Flatten + Linear(192$\rightarrow$128) + BN + ReLU + Dropout(0.5) \newline Linear(128$\rightarrow$64) + BN + ReLU + Dropout(0.4) \newline Linear(64$\rightarrow$3) & 3 & 3 classes \\ \hline
+Output Layer & 3-class probabilities & 3 & Softmax (tại inference) \\ \hline
+\end{tabularx}
+\end{table}
+
+Với input kích thước $128 \times 128$ pixels, kích thước bản đồ đặc trưng (\textit{feature map}) thu nhỏ dần qua mỗi lớp \textit{MaxPool}: $64 \times 64 \rightarrow 32 \times 32 \rightarrow 16 \times 16 \rightarrow 8 \times 8$ trước khi đi qua tầng \textit{GAP} (\textit{Global Average Pooling}) và các lớp kết nối đầy đủ \textit{Fully Connected} (\textit{FC}).
+
+\subsubsection{Tham số huấn luyện}
+Các tham số và cấu hình cụ thể áp dụng cho quá trình huấn luyện mô hình được thống kê chi tiết trong Bảng \ref{tab:hyperparameters_config}.
+
+% Định nghĩa màu trước khi vào bảng để đảm bảo an toàn, không bị lỗi đứng chương trình
+\definecolor{headerblue}{RGB}{27, 79, 114} 
+
+\begin{table}[H]
+\centering
+\caption{Cấu hình tham số siêu tham số (Hyperparameters) trong quá trình huấn luyện}
+\label{tab:hyperparameters_config}
+\begin{tabular}{|l|l|}
+\hline
+\rowcolor{headerblue} 
+\textbf{\color{white}Tham số} & \textbf{\color{white}Giá trị / Cấu hình} \\ \hline
+Số epochs tối đa & 10 (có Early Stopping, patience=5) \\ \hline
+Batch size & 32 \\ \hline
+Optimizer (chính) & Adam (lr=0.001, weight\_decay=5e-4) \\ \hline
+Optimizer (so sánh) & SGD (lr=0.01, momentum=0.9, weight\_decay=1e-4) \\ \hline
+Loss function & CrossEntropyLoss với label\_smoothing=0.1 \\ \hline
+Learning Rate Scheduler & ReduceLROnPlateau (factor=0.5, patience=2, mode='min') \\ \hline
+DataLoader workers & 2 (num\_workers=2) \\ \hline
+Max ảnh mỗi lớp & 3.500 ảnh (cân bằng dataset) \\ \hline
+\end{tabular}
+\end{table}
+
+Chiến lược \textit{Early Stopping} được áp dụng để ngăn chặn hiện tượng quá khớp (\textit{overfitting}): nếu giá trị lỗi trên tập kiểm định (\texttt{val\_loss}) không giảm sau 5 epoch liên tiếp, quá trình huấn luyện sẽ dừng sớm và mô hình có kết quả tốt nhất đã lưu sẽ được sử dụng. Mô hình tối ưu nhất (\texttt{best\_val\_loss} thấp nhất) được lưu tự động vào Google Drive thông qua dòng lệnh:
+
+\begin{verbatim}
+torch.save(model.state_dict(), 
+           '/content/drive/MyDrive/best_model_adam.pth')
+\end{verbatim}
+
+Hàm \texttt{train\_model()} thực hiện ghi lại toàn bộ lịch sử huấn luyện bao gồm các chỉ số \texttt{train\_loss}, \texttt{val\_loss}, \texttt{train\_acc}, và \texttt{val\_acc} theo từng epoch, sau đó xuất ra file định dạng JSON để phục vụ cho các tác vụ phân tích và trực quan hóa dữ liệu về sau.
+
+\subsection{Triển khai module theo dõi và cấu hình logic cảnh báo}
+
+\subsubsection{Tích hợp CNN với Deepsort}
+Class \texttt{PersonTrackerV2} là thành phần trung tâm của hệ thống, đảm nhiệm việc kết nối đầu ra phân loại của \texttt{MaskCNN} với thuật toán theo dõi \texttt{DeepSORT}. Quy trình tích hợp diễn ra trong hàm \texttt{process\_frame()} theo các bước tuần tự sau:
+
+\begin{itemize}
+
+\item \textbf{Bước 1 --- Phát hiện khuôn mặt:} \texttt{MTCNN} quét frame và trả về danh sách \textit{bounding box} cùng điểm \textit{confidence}. Chỉ các hộp có \textit{confidence} $\ge 0.9$ mới được giữ lại.
+
+\item \textbf{Bước 2 --- Phân loại:} Vùng ảnh khuôn mặt được cắt ra, thực hiện thay đổi kích thước (\textit{resize}) về $224 \times 224$, chuẩn hóa bằng các thông số ImageNet (\textit{mean/std}) rồi đưa qua mô hình \texttt{MaskCNN}. Hàm \texttt{argmax()} được sử dụng để chọn ra lớp (\textit{class}) có xác suất cao nhất.
+
+\item \textbf{Bước 3 --- Chuẩn hóa định dạng:} Bounding box từ định dạng ban đầu $xyxy$ được chuyển sang định dạng $xywh$ theo yêu cầu đầu vào của hàm \texttt{DeepSort.update\_tracks()}, cụ thể là $[x1, y1, w, h]$.
+
+\item \textbf{Bước 4 --- DeepSORT update:} Hàm \texttt{tracker.update\_tracks(ds\_input, frame=frame\_rgb)} thực hiện thuật toán Hungarian (\textit{Hungarian Algorithm}) để khớp kết quả phát hiện (\textit{detection}) với các vết theo dõi (\textit{track}) hiện có, đồng thời tạo \textit{track} mới hoặc xóa bỏ các \textit{track} cũ. Chỉ các \textit{track} ở trạng thái \texttt{Confirmed} (duy trì liên tục trong \texttt{n\_init=3} frame) mới được đưa vào xử lý ở các bước tiếp theo.
+
+\end{itemize}
+
+
+Cấu hình khởi tạo của \texttt{DeepSort} trong mã nguồn được thiết lập cụ thể như sau:
+
+
+
+\begin{verbatim}
+
+self.tracker = DeepSort(
+
+ max_age=30,  # Giữ track tối đa 30 frame khi mất detect
+
+ n_init=3,  # Cần 3 frame để xác nhận track mới
+
+ nn_budget=100, # Số embedding tối đa lưu trong gallery
+
+ max_iou_distance=0.7 # Ngưỡng IoU để khớp detection-track)
+
+\end{verbatim}
+
+\subsubsection{Xây dựng thuật toán đếm thời gian (Timer) theo ID đối tượng}
+
+Thuật toán đếm thời gian được thiết kế để theo dõi tích lũy thời gian đeo khẩu trang đúng cách cho từng cá nhân dựa trên \texttt{Track ID}. Mỗi \texttt{track\_id} được quản lý bởi một dictionary trạng thái độc lập:
+
+
+\begin{verbatim}
+
+self.states = defaultdict(lambda: {
+
+ "mask_start": None,  # Thời điểm bắt đầu đeo đúng
+
+ "mask_duration": 0.0, # Tổng thời gian tích lũy (giây)
+
+ "last_class": None,  # Trạng thái lần cuối
+
+ "alerted": False, # Đã cảnh báo chưa
+
+})
+
+\end{verbatim}
+Logic đếm thời gian hoạt động theo nguyên tắc được thống kê chi tiết trong Bảng \ref{tab:timer_logic}.
+
+\definecolor{headerblue}{RGB}{27, 79, 114} 
+
+\begin{table}[H] % Ép bảng cố định tại đây để tránh lỗi nhảy chữ
+\centering
+\caption{Nguyên tắc hoạt động và xử lý logic của bộ đếm thời gian (Timer)}
+\label{tab:timer_logic}
+% VỊ TRÍ THAY THẾ: Chuyển từ tabular sang tabularx và đổi |l|l| thành các cột X tự ngắt dòng
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+\hline
+\rowcolor{headerblue} 
+\textbf{\color{white}Trạng thái phát hiện (class\_id)} & \textbf{\color{white}Hành động của Timer} \\ \hline
+class\_id == 1 (đeo đúng) và mask\_start là None & Ghi nhận thời điểm bắt đầu: mask\_start = current\_time. \\ \hline
+class\_id == 1 (đeo đúng) và mask\_start đã có & Cập nhật thời gian: mask\_duration = current\_time - mask\_start. \\ \hline
+class\_id != 1 (đeo sai hoặc không đeo) & Reset hoàn toàn: mask\_start = None, mask\_duration = 0.0, alerted = False. \\ \hline
+Track ID mất khỏi frame (max\_age hết) & DeepSORT tự xóa track; states[tid] không bị xóa ngay (dùng defaultdict). \\ \hline
+\end{tabularx} % Đổi thành end{tabularx} tương ứng
+\end{table}
+
+Đây là thiết kế quan trọng: đồng hồ sẽ được reset ngay khi người dùng tháo khẩu trang hoặc đeo sai, đảm bảo cảnh báo chỉ kích hoạt khi đối tượng đeo LIÊN TỤC quá ngưỡng thời gian quy định.
+\subsubsection{Cơ chế kích hoạt cảnh báo}
+
+Ngưỡng thời gian cảnh báo mặc định là \texttt{ALERT\_SECONDS = 10} giây, người dùng có thể tùy chỉnh tham số này trước khi khởi tạo bộ theo dõi đối tượng (\textit{tracker}):
+
+\begin{verbatim}
+
+PersonTrackerV2.ALERT_SECONDS = alert_seconds  # Ví dụ: 10, 20, 30 giây
+
+tracker = PersonTrackerV2()
+\end{verbatim}
+Cơ chế kích hoạt cảnh báo được kiểm tra tự động trong mỗi frame hình sau khi hệ thống cập nhật giá trị biến \texttt{mask\_duration}:
+
+\begin{verbatim}
+
+alert = (cls_id != 1 and st['mask_duration'] > self.ALERT_SECONDS)
+
+if alert and not st['alerted']:
+
+    print(f'CẢNH BÁO: ID {tid} đeo {st["mask_duration"]:.1f}s')
+
+    st['alerted'] = True
+
+\end{verbatim}
+
+
+
+Cờ hiệu \texttt{alerted} đảm bảo thông báo trên console chỉ in ra duy nhất một lần cho mỗi sự kiện vi phạm nhằm tránh hiện tượng rác log (\textit{spam log}). Tác vụ trực quan hóa cảnh báo trực tiếp lên các frame video được đảm nhiệm bởi hàm tĩnh \texttt{PersonTrackerV2.draw()} với các thành phần cấu hình chi tiết trong Bảng \ref{tab:alert_ui_config}.
+
+
+
+\begin{table}[H] % Ép bảng đứng cố định tại vị trí này để tránh lỗi nhảy chữ, chen dòng
+
+\centering
+
+\caption{Các thành phần hiển thị trực quan và cấu hình màu sắc trên giao diện cảnh báo}
+
+\label{tab:alert_ui_config}
+
+\definecolor{headerblue}{RGB}{27, 79, 114} % Màu xanh đậm đồng bộ thiết kế
+
+
+
+\begin{tabularx}{\textwidth}{|l|l|X|}
+
+\hline
+
+\rowcolor{headerblue}
+
+\textbf{\color{white}Thành phần hiển thị} & \textbf{\color{white}Màu sắc} & \textbf{\color{white}Nội dung} \\ \hline
+
+Bounding box bình thường & Xanh lá (0,255,0) & Viền mỏng 2px --- đang đeo đúng, chưa vượt ngưỡng. \\ \hline
+
+Bounding box cảnh báo & Đỏ với viền đậm 4px & Vi phạm đang xảy ra. \\ \hline
+
+Nhãn ID + trạng thái & Màu theo class (cam/xanh/đỏ) & "ID:5 With Mask" hiển thị phía trên bounding box. \\ \hline
+
+Banner thời gian đeo & Xanh lá & "Thoi gian deo: 7.3s" hiển thị phía dưới bbox (chỉ khi \texttt{class=1}). \\ \hline
+
+Banner cảnh báo đỏ & Nền đỏ bán trong suốt (60\% opacity) & "!! CANH BAO: 12s !!" --- xuất hiện khi vượt ngưỡng vi phạm. \\ \hline
+
+\end{tabularx}
+
+\end{table}
+
+
+
+Ngoài ra, hệ thống được thiết kế kiến trúc mở để mở rộng tích hợp âm thanh cảnh báo thông qua các thư viện chuyên dụng như \texttt{soundfile} hoặc \texttt{pygame}. Hiện tại, khi phát hiện vi phạm, cảnh báo mới chỉ được in ra màn hình console và hiển thị trực quan trên giao diện. Trong các phiên bản nâng cao, lệnh kích hoạt loa phát thanh có thể dễ dàng chèn vào khối lệnh điều kiện \texttt{if alert and not st['alerted']:} mà hoàn toàn không làm ảnh hưởng hay thay đổi cấu trúc tổng thể của hệ thống.
+
+
+
+Mô-đun giao diện người dùng chính (\texttt{main\_menu}) cho phép lựa chọn linh hoạt ba chế độ vận hành độc lập bao gồm:
+
+\begin{itemize}
+
+ \item \textbf{Detect Image:} Xử lý ảnh tĩnh, không sử dụng bộ theo dõi đối tượng \textit{tracker}.
+
+ \item \textbf{Detect Video:} Xử lý tệp tin video đầu vào, tự động lưu kết quả đầu ra thành file \texttt{output\_video.mp4}.
+
+ \item \textbf{Realtime Webcam:} Kích hoạt và xử lý luồng dữ liệu camera trực tiếp theo thời gian thực.
+
+\end{itemize}
+
+
+
+Trong cả hai chế độ vận hành Video và Webcam, class \texttt{PersonTrackerV2} sẽ được khởi tạo mới với thông số \texttt{alert\_seconds} mặc định là 10 giây, đồng thời chỉ số FPS hiện tại của hệ thống sẽ được hiển thị ở góc trên bên trái màn hình giúp người dùng dễ dàng giám sát hiệu năng.
+
+% ==================== TÀI LIỆU THAM KHẢO ====================
+\printbibliography[title={TÀI LIỆU THAM KHẢO}]
+
+\end{document}
