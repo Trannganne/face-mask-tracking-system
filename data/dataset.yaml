@@ -1,0 +1,3 @@
+path: /data
+nc: 3
+names: {0: 'Đeo sai', 1: 'Đeo đúng', 2: 'Không đeo'}
