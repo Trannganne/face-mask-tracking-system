@@ -3,7 +3,7 @@ val: images/val
 test: images/test
 
 nc: 3
-names: ['mask_weared_incorrect', 'with_mask', 'without_mask']
+names: ["mask_weared_incorrect", "with_mask", "without_mask"]
 
 roboflow:
   workspace: deep-learning-hwsxj

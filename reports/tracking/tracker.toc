@@ -1,28 +1,30 @@
 \babel@toc {vietnamese}{}\relax 
-\contentsline {section}{\numberline {1}CHƯƠNG 1: MỞ ĐẦU}{6}{}%
-\contentsline {subsection}{\numberline {1.1}Lý do chọn đề tài}{6}{}%
-\contentsline {subsection}{\numberline {1.2}Mục tiêu nghiên cứu}{6}{}%
-\contentsline {subsubsection}{\numberline {1.2.1}Mục tiêu tổng quát}{6}{}%
-\contentsline {subsubsection}{\numberline {1.2.2}Mục tiêu cụ thể}{6}{}%
-\contentsline {section}{\numberline {2}CHƯƠNG 2: TỔNG QUAN CƠ SỞ LÝ THUYẾT}{8}{}%
-\contentsline {subsection}{\numberline {2.1}Mạng nơ-ron tích chập (Convolutional Neural Network -- CNN)}{8}{}%
-\contentsline {subsubsection}{\numberline {2.1.1}Feature trong CNN}{8}{}%
-\contentsline {subsubsection}{\numberline {2.1.2}Những lớp cơ bản của mạng CNN}{8}{}%
-\contentsline {subsection}{\numberline {2.2}Thuật toán theo dõi đối tượng đa mục tiêu DeepSORT}{9}{}%
-\contentsline {subsubsection}{\numberline {2.2.1}Bài toán theo dõi đối tượng (Object Tracking)}{9}{}%
-\contentsline {subsubsection}{\numberline {2.2.2}Bộ lọc Kalman (Kalman Filter)}{9}{}%
-\contentsline {subsubsection}{\numberline {2.2.3}Thuật toán Hungary (Hungarian Algorithm)}{10}{}%
-\contentsline {subsubsection}{\numberline {2.2.4}Mạng nhúng sâu (Deep Appearance Descriptor)}{10}{}%
-\contentsline {section}{\numberline {3}CHƯƠNG 3: THIẾT KẾ VÀ XÂY DỰNG}{11}{}%
-\contentsline {subsection}{\numberline {3.1}Kiến trúc tổng quan}{11}{}%
-\contentsline {subsection}{\numberline {3.2}Xây dựng và tiền xử lý bộ dữ liệu (dataset)}{12}{}%
-\contentsline {subsubsection}{\numberline {3.2.1}Thu thập dữ liệu}{12}{}%
-\contentsline {subsubsection}{\numberline {3.2.2}Gán nhãn dữ liệu}{13}{}%
-\contentsline {subsection}{\numberline {3.3}Quá trình huấn luyện mô hình CNN}{14}{}%
-\contentsline {subsubsection}{\numberline {3.3.1}Môi trường cấu hình}{14}{}%
-\contentsline {subsubsection}{\numberline {3.3.2}Kiến trúc mô hình MaskCNN}{15}{}%
-\contentsline {subsubsection}{\numberline {3.3.3}Tham số huấn luyện}{15}{}%
-\contentsline {subsection}{\numberline {3.4}Triển khai module theo dõi và cấu hình logic cảnh báo}{16}{}%
-\contentsline {subsubsection}{\numberline {3.4.1}Tích hợp CNN với Deepsort}{16}{}%
-\contentsline {subsubsection}{\numberline {3.4.2}Xây dựng thuật toán đếm thời gian (Timer) theo ID đối tượng}{17}{}%
-\contentsline {subsubsection}{\numberline {3.4.3}Cơ chế kích hoạt cảnh báo}{18}{}%
+\contentsline {section}{DANH MỤC BẢNG BIỂU}{4}{}%
+\contentsline {section}{\numberline {1}CHƯƠNG 1: MỞ ĐẦU}{7}{}%
+\contentsline {subsection}{\numberline {1.1}Lý do chọn đề tài}{7}{}%
+\contentsline {subsection}{\numberline {1.2}Mục tiêu nghiên cứu}{7}{}%
+\contentsline {subsubsection}{\numberline {1.2.1}Mục tiêu tổng quát}{7}{}%
+\contentsline {subsubsection}{\numberline {1.2.2}Mục tiêu cụ thể}{7}{}%
+\contentsline {section}{\numberline {2}CHƯƠNG 2: TỔNG QUAN CƠ SỞ LÝ THUYẾT}{9}{}%
+\contentsline {subsection}{\numberline {2.1}Mạng nơ-ron tích chập (Convolutional Neural Network -- CNN)}{9}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}Feature trong CNN}{9}{}%
+\contentsline {subsubsection}{\numberline {2.1.2}Những lớp cơ bản của mạng CNN}{9}{}%
+\contentsline {subsection}{\numberline {2.2}Thuật toán theo dõi đối tượng đa mục tiêu DeepSORT}{10}{}%
+\contentsline {subsubsection}{\numberline {2.2.1}Bài toán theo dõi đối tượng (Object Tracking)}{10}{}%
+\contentsline {subsubsection}{\numberline {2.2.2}Bộ lọc Kalman (Kalman Filter)}{10}{}%
+\contentsline {subsubsection}{\numberline {2.2.3}Thuật toán Hungary (Hungarian Algorithm)}{11}{}%
+\contentsline {subsubsection}{\numberline {2.2.4}Mạng nhúng sâu (Deep Appearance Descriptor)}{11}{}%
+\contentsline {section}{\numberline {3}CHƯƠNG 3: THIẾT KẾ VÀ XÂY DỰNG}{12}{}%
+\contentsline {subsection}{\numberline {3.1}Kiến trúc tổng quan}{12}{}%
+\contentsline {subsection}{\numberline {3.2}Xây dựng và tiền xử lý bộ dữ liệu (dataset)}{13}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Thu thập dữ liệu}{13}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}Gán nhãn dữ liệu}{14}{}%
+\contentsline {subsection}{\numberline {3.3}Quá trình huấn luyện mô hình CNN}{15}{}%
+\contentsline {subsubsection}{\numberline {3.3.1}Môi trường cấu hình}{15}{}%
+\contentsline {subsubsection}{\numberline {3.3.2}Kiến trúc mô hình MaskCNN}{16}{}%
+\contentsline {subsubsection}{\numberline {3.3.3}Tham số huấn luyện}{17}{}%
+\contentsline {subsection}{\numberline {3.4}Triển khai module theo dõi và cấu hình logic cảnh báo}{18}{}%
+\contentsline {subsubsection}{\numberline {3.4.1}Tích hợp CNN với Deepsort}{18}{}%
+\contentsline {subsubsection}{\numberline {3.4.2}Xây dựng thuật toán đếm thời gian (Timer) theo ID đối tượng}{19}{}%
+\contentsline {subsubsection}{\numberline {3.4.3}Cơ chế kích hoạt cảnh báo}{20}{}%
+\contentsline {section}{\numberline {4}TÀI LIỆU THAM KHẢO}{22}{}%

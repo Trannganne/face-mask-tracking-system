@@ -1,0 +1,9 @@
+\babel@toc {vietnamese}{}\relax 
+\contentsline {section}{\numberline {1}Giới thiệu về Mạng Nơ-ron Tích chập (CNN)}{2}{section.1}%
+\contentsline {section}{\numberline {2}Các thành phần cốt lõi trong kiến trúc CNN}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Lớp Tích chập (Convolutional Layer)}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Hàm Kích hoạt (Activation Function - Thường dùng ReLU)}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Lớp Gộp (Pooling Layer)}{2}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Khối Quyết định: Lớp Làm phẳng (Flatten) và Lớp Kết nối Đầy đủ (Dense/Fully Connected)}{3}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Các kỹ thuật tối ưu hóa trong Huấn luyện}{3}{section.3}%
+\contentsline {section}{\numberline {4}Quy trình học (Hierarchical Learning)}{3}{section.4}%

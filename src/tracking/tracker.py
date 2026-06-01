@@ -1,3 +1,8 @@
+from collections import defaultdict
+import numpy as np
+import soundfile as sf
+import sounddevice as sd
+from deep_sort_realtime.deepsort_tracker import DeepSort
 
 from deep_sort_realtime.deepsort_tracker import DeepSort
 
