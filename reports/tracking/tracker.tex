@@ -48,7 +48,7 @@
 \rule{5cm}{1pt} 
 \vspace{1.5cm} 
 
-\includegraphics[width=4cm]{logo.jpg} 
+\includegraphics[width=4cm]{figures/logo.jpg} 
 
 \vspace{1.5cm}
 {\fontsize{16pt}{20pt}\selectfont \textbf{BÁO CÁO ĐỒ ÁN MÔN HỌC}} \\
@@ -64,7 +64,7 @@
 \begin{flushleft}
 \hspace{3cm} 
 \begin{tabular}{ll}
-\textbf{Giảng viên hướng dẫn:} & ThS. Huỳnh Thái Học \\
+\textbf{Giảng viên hướng dẫn:} & TS. Huỳnh Thái Học \\
 \end{tabular}
 \end{flushleft}
 
@@ -92,7 +92,7 @@
 \rule{5cm}{1pt} 
 \vspace{1.5cm} 
 
-\includegraphics[width=4cm]{logo.jpg} 
+\includegraphics[width=4cm]{figures/logo.jpg} 
 
 \vspace{1.5cm}
 {\fontsize{16pt}{20pt}\selectfont \textbf{BÁO CÁO ĐỒ ÁN MÔN HỌC}} \\
@@ -108,11 +108,11 @@
 \begin{flushleft}
 \hspace{3cm} 
 \begin{tabular}{ll}
-\textbf{Giảng viên hướng dẫn:} & ThS. Huỳnh Thái Học \\
-\textbf{Sinh viên thực hiện:}   & Trần Thị Kim Ngân -- 2001230554 \\
-                               & Phạm Nguyễn Hồng Ngọc \\
+\textbf{Giảng viên hướng dẫn:} & TS. Huỳnh Thái Học \\
+\textbf{Sinh viên thực hiện:}  & Phạm Nguyễn Hồng Ngọc \\
                                & Trần Quốc Trường \\
                                & Nguyễn Duy Hưng \\
+                               & Trần Thị Kim Ngân -- 2001230554 \\
 \end{tabular}
 \end{flushleft}
 
@@ -133,7 +133,7 @@
 
 Lời đầu tiên, nhóm 11 xin gửi lời cảm ơn chân thành đến Ban giám hiệu Trường Đại học Công thương TP.HCM cùng Khoa Công nghệ Thông tin đã tạo môi trường học tập tốt nhất cho chúng em trong suốt thời gian qua.
 
-Đặc biệt, nhóm xin gửi lời tri ân sâu sắc đến ThS. Huỳnh Thái Học -- người thầy đã trực tiếp hướng dẫn, dành nhiều thời gian tâm huyết để dẫn dắt nhóm qua các buổi thực hành. Nhờ có sự định hướng tỉ mỉ của các thầy, nhóm đã tiếp cận môn học dưới góc nhìn toàn diện, nâng cao tư duy thực chiến và hiểu rõ hơn tính thiết thực của kiến thức vào thực tế.
+Đặc biệt, nhóm xin gửi lời tri ân sâu sắc đến TS. Huỳnh Thái Học -- người thầy đã trực tiếp hướng dẫn, dành nhiều thời gian tâm huyết để dẫn dắt nhóm qua các buổi thực hành. Nhờ có sự định hướng tỉ mỉ của các thầy, nhóm đã tiếp cận môn học dưới góc nhìn toàn diện, nâng cao tư duy thực chiến và hiểu rõ hơn tính thiết thực của kiến thức vào thực tế.
 
 Do giới hạn về mặt thời gian và trải nghiệm thực tế, bài báo cáo khó lòng hoàn hảo tuyệt đối. Nhóm 11 rất hy vọng sẽ nhận được sự lượng thứ cùng những nhận xét, đóng góp quý báu từ thầy để hoàn thiện năng lực của bản thân trong tương lai.
 
@@ -145,10 +145,10 @@ Do giới hạn về mặt thời gian và trải nghiệm thực tế, bài bá
 \begin{tabular}{l} 
     \textbf{Nhóm 11 xin chân thành cảm ơn!} \\
     \textit{(Tập thể thành viên nhóm)} \\[0.5em]
-    \textit{Trần Thị Kim Ngân -- 2001230554} \\
     \textit{Phạm Nguyễn Hồng Ngọc -- 2001230554} \\
     \textit{Trần Quốc Trường -- 2001230554} \\
-    \textit{Nguyễn Duy Hưng -- 2001230554}
+    \textit{Nguyễn Duy Hưng -- 2001230554}\\
+    \textit{Trần Thị Kim Ngân -- 2001230554}
 \end{tabular}
 \hspace{1cm} 
 \end{flushright}
@@ -277,7 +277,7 @@ Hệ thống được thiết kế theo kiến trúc pipeline đa tầng, kết 
 
 Khi phát hiện đối tượng vi phạm (đeo khẩu trang đúng cách quá 10 giây mà hệ thống muốn cảnh báo, hoặc không đeo), hệ thống hiển thị banner cảnh báo màu đỏ trực tiếp lên frame video với thông tin ID người dùng và thời gian vi phạm. Sơ đồ luồng xử lý chi tiết được thể hiện trong Hình 3.1.
 
-\includegraphics{luongxuly.png}
+\includegraphics{figures/luongxuly.png}
 \subsection{Xây dựng và tiền xử lý bộ dữ liệu (dataset)}
 \subsubsection{Thu thập dữ liệu}
 Bộ dữ liệu được sử dụng trong đề tài là \textit{Face Mask Dataset} (\texttt{FMD\_DATASET}) do Shiekh Burhan công bố trên nền tảng Kaggle (\url{kaggle.com/datasets/shiekhburhan/face-mask-dataset}). Dataset được tải về tự động trong môi trường Google Colab bằng Kaggle API thông qua dòng lệnh sau:
@@ -540,9 +540,9 @@ alert = (cls_id != 1 and st['mask_duration'] > self.ALERT_SECONDS)
 
 if alert and not st['alerted']:
 
-    print(f'CẢNH BÁO: ID {tid} đeo {st["mask_duration"]:.1f}s')
+print(f'CẢNH BÁO: ID {tid} đeo {st["mask_duration"]:.1f}s')
 
-    st['alerted'] = True
+st['alerted'] = True
 
 \end{verbatim}
 
@@ -604,9 +604,195 @@ Mô-đun giao diện người dùng chính (\texttt{main\_menu}) cho phép lựa
 
 \end{itemize}
 
-
-
 Trong cả hai chế độ vận hành Video và Webcam, class \texttt{PersonTrackerV2} sẽ được khởi tạo mới với thông số \texttt{alert\_seconds} mặc định là 10 giây, đồng thời chỉ số FPS hiện tại của hệ thống sẽ được hiển thị ở góc trên bên trái màn hình giúp người dùng dễ dàng giám sát hiệu năng.
+
+\section{CHƯƠNG TRÌNH THỰC NGHIỆM}
+\subsection{Chỉ số đánh giá hiệu suất}
+Để đánh giá năng lực phân loại ảnh một cách chính xác, các mô hình mạng thần kinh nhân tạo tích chập (CNN) đề xuất ở phần trước sẽ được thiết lập cấu hình và triển khai trực tiếp trên bộ dữ liệu thực nghiệm. Quá trình giám sát huấn luyện và kiểm thử mô hình CNN dựa trên 3 thành phần đầu ra điển hình sau:
+
+\begin{itemize}
+    \item \textbf{Đồ thị độ chính xác (Model Accuracy Plot):} Biểu đồ này trực quan hóa sự thay đổi về độ chính xác của mô hình trên cả tập huấn luyện (\textit{train set}) và tập kiểm chứng (\textit{validation set}) qua từng chu kỳ (\textit{epoch}). Chỉ số này phản ánh khả năng trích xuất đặc trưng tăng tiến của mô hình.
+    
+    \item \textbf{Đồ thị hàm mất mát (Model Loss Plot):} Thể hiện động lực học của hàm mất mát qua các chu kỳ huấn luyện. Hàm mất mát đo lường mức độ sai khác giữa xác suất dự đoán của mạng thần kinh và nhãn thực tế (\textit{ground truth}). Sự suy giảm ổn định của đồ thị Loss chứng minh mô hình đang hội tụ đúng hướng thông qua thuật toán lan truyền ngược.
+    
+    \item \textbf{Ma trận nhầm lẫn (Confusion Matrix):} Đây là công cụ biểu diễn trực quan cấu trúc kết quả phân loại. Ma trận này đối chiếu số lượng điểm dữ liệu thực tế thuộc về một phân lớp (\textit{class}) so với phân lớp mà mô hình dự đoán. 
+\end{itemize}
+
+Từ ma trận nhầm lẫn đối với bài toán phân loại nhị phân, ta xác định được 4 đại lượng nền tảng:
+\begin{itemize}
+    \item \textbf{TP (True Positive):} Số lượng các mẫu mang nhãn tích cực (\textit{Positive}) được mô hình phân loại chính xác là tích cực.
+    \item \textbf{TN (True Negative):} Số lượng các mẫu mang nhãn tiêu cực (\textit{Negative}) được mô hình phân loại chính xác là tiêu cực.
+    \item \textbf{FP (False Positive - Sai lầm loại 1):} Số lượng dự đoán sai lệch, xảy ra khi mô hình phân loại một mẫu tiêu cực thành tích cực (Hiện tượng báo động giả).
+    \item \textbf{FN (False Negative - Sai lầm loại 2):} Số lượng dự đoán sai lệch gián tiếp, xảy ra khi mô hình phân loại một mẫu tích cực thành tiêu cực (Hiện tượng bỏ sót mục tiêu).
+\end{itemize}
+
+Từ 4 chỉ số cơ bản $TP, TN, FP, FN$, các thước đo định lượng sau đây được thiết lập để đánh giá toàn diện mức độ tin cậy và năng lực tổng quát hóa của mô hình học sâu:
+
+\begin{itemize}
+    \item \textbf{Độ chính xác toàn cục (Accuracy):} Thước đo tỷ lệ giữa tổng số mẫu được dự đoán đúng (bao gồm cả tích cực và tiêu cực) trên tổng số lượng mẫu có trong tập dữ liệu thử nghiệm.
+    \begin{equation}
+    Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
+    \end{equation}
+
+    \item \textbf{Độ chính xác dự báo tích cực (Precision):} Đo lường tỷ lệ các trường hợp thực sự đúng (\textit{True Positive}) trong tổng số các trường hợp mà mô hình đã gắn nhãn là tích cực. Chỉ số này tối ưu khi cần giảm thiểu sai lầm báo động giả ($FP$).
+    \begin{equation}
+    Precision = \frac{TP}{TP + FP}
+    \end{equation}
+
+    \item \textbf{Độ nhạy / Độ gợi nhớ (Recall):} Đo lường tỷ lệ các trường hợp tích cực được mô hình nhận diện thành công so với tổng số lượng mẫu tích cực thực tế có trong cấu trúc dữ liệu. Chỉ số này tối ưu khi cần hạn chế tối đa việc bỏ sót mục tiêu ($FN$).
+    \begin{equation}
+    Recall = \frac{TP}{TP + FN}
+    \end{equation}
+
+    \item \textbf{Điểm số F1 (F1-Score):} Là giá trị trung bình điều hòa (\textit{Harmonic Mean}) giữa hai chỉ số $Precision$ và $Recall$. Điểm số F1 giữ vai trò cân bằng và phản ánh chuẩn xác mức độ tin cậy chung của mô hình, đặc biệt phát huy hiệu quả trong các ngữ cảnh tập dữ liệu thực nghiệm rơi vào trạng thái mất cân bằng nhãn (\textit{imbalanced dataset}).
+    \begin{equation}
+    F1\text{-}Score = 2 \times \frac{Precision \times Recall}{Precision + Recall} = \frac{2TP}{2TP + FP + FN}
+    \end{equation}
+\end{itemize}
+
+\subsection{Tiêu chí đánh giá mô hình}
+Trong các bài toán Học sâu (Deep Learning), việc đánh giá quá trình hội tụ và hiệu năng của các mạng thần kinh nhân tạo đòi hỏi sự phân tích khắt khe trên cả khía cạnh định lượng lẫn cấu trúc mạng. Dưới đây là các tiêu chí cốt lõi quyết định đến sự thành bại của một kiến trúc học sâu:
+
+\begin{itemize}
+    \item \textbf{Độ chính xác (Accuracy):} Là chỉ số đo lường tỷ lệ các mẫu dữ liệu được phân loại hoặc dự đoán hoàn toàn chính xác trên tập dữ liệu kiểm thử (\textit{test set}). Đối với mạng học sâu, độ chính xác cuối cùng thể hiện năng lực trích xuất đặc trưng (\textit{feature extraction}) tầng thứ của mô hình đối với các cấu trúc dữ liệu phức tạp chưa từng từ gặp trong quá trình huấn luyện.
+
+    \item \textbf{Độ mất mát (Loss):} Giá trị hàm mất mát là kim chỉ nam để mạng thần kinh thực hiện quá trình lan truyền ngược (\textit{Backpropagation}) và cập nhật các trọng số (\textit{weights}). Khác với các mô hình học máy truyền thống, sự biến thiên của hàm mất mát qua từng chu kỳ (\textit{epoch}) trong học sâu phản ánh trực tiếp tốc độ hội tụ và độ ổn định của thuật toán tối ưu hóa (như Adam, SGD) khi tìm kiếm điểm cực tiểu toàn cục trên bề mặt lỗi phức tạp.
+
+    \item \textbf{Tính đồng nhất (Consistency):} Thể hiện tính ổn định về mặt phong độ của cấu trúc mạng sâu trước các yếu tố ngẫu nhiên. Tiêu chí này đòi hỏi mô hình phải cho ra biểu đồ hội tụ và hiệu suất tương đương khi thay đổi trạng thái khởi tạo trọng số ban đầu (\textit{weight initialization}), thay đổi trật tự xáo trộn dữ liệu (\textit{shuffling}), hoặc khi áp dụng kỹ thuật kiểm chứng chéo (\textit{Cross-Validation}).
+
+    \item \textbf{Hiện tượng Quá khớp (Overfitting) và Thiếu khớp (Underfitting):} Đây là rào cản lớn nhất liên quan trực tiếp đến khả năng tổng quát hóa (\textit{generalization}) của các mạng thần kinh có hàng triệu tham số:
+    \begin{itemize}
+        \item \textit{Thiếu khớp (Underfitting):} Xảy ra khi kiến trúc mạng quá nông, số lượng tham số quá ít, hoặc cấu trúc mô hình chưa đủ độ phức tạp để mô hình hóa và nắm bắt được các đặc trưng phi tuyến tính của tập dữ liệu huấn luyện.
+        \item \textit{Quá khớp (Overfitting):} Xảy ra khi mạng thần kinh quá sâu hoặc huấn luyện quá nhiều chu kỳ, khiến mô hình ``học vẹt'' toàn bộ chi tiết cá biệt và cả nhiễu (\textit{noise}) của tập huấn luyện. Hệ quả là độ mất mát trên tập \textit{train} cực thấp nhưng lại tăng vọt (hiệu suất giảm mạnh) khi kiểm thử với dữ liệu thực tế. Trong học sâu, hiện tượng này thường được kiểm soát bằng các kỹ thuật điều chuẩn như Dropout, Batch Normalization hoặc Early Stopping.
+    \end{itemize}
+
+    \item \textbf{Thời gian huấn luyện và Tài nguyên tính toán (Training Time \& Computational Cost):} Đối với học sâu, thời gian huấn luyện không chỉ phụ thuộc vào dung lượng dữ liệu lớn (\textit{Big Data}) mà còn bị ràng buộc bởi độ sâu của cấu trúc mạng và kích thước lô (\textit{batch size}). Đánh giá thời gian huấn luyện gắn liền với hiệu suất khai thác phần cứng (hiệu năng tính toán song song trên GPU/TPU) và là yếu tố chiến lược để cân bằng giữa chi phí vận hành và chất lượng của mô hình.
+\end{itemize}
+\subsection{Kết quả thực nghiệm}
+\subsubsection{So sánh hàm tối ưu SGD và Adam}
+% --- PHẦN TOÁN TỐI ƯU SGD ---
+\subsubsection*{a. Kết quả huấn luyện với hàm tối ưu hóa SGD}
+
+Khi áp dụng hàm tối ưu SGD, đồ thị ACC cho thấy độ chính xác (Accuracy) đạt lên đến khoảng 95\% và bắt đầu đi vào trạng thái ổn định khi epoch = 10 cho cả tập dữ liệu huấn luyện và tập test. Song song đó, đồ thị Loss cũng cho thấy sau mức này, độ mất mát của cả tập train và validation đều giảm tối đa và đi ngang. Kết quả thực nghiệm này minh chứng mô hình đạt được độ phù hợp tốt, có khả năng tổng quát hóa cao và hoàn toàn không bị hiện tượng quá khớp (over-fitting).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/dothi_sdg.png}
+    \caption{Đồ thị Loss và Accuracy của mô hình sử dụng bộ tối ưu SGD.}
+    \label{fig:dothi_sdg}
+\end{figure}
+
+\noindent\textbf{Đánh giá hiệu suất mô hình:}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/report_sdg.png}
+    \caption{Báo cáo hiệu suất phân loại (Classification Report) với SGD.}
+    \label{fig:report_sdg}
+\end{figure}
+
+\noindent\textbf{Ma trận nhầm lẫn (Confusion matrix):}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/confusion_sdg.png}
+    \caption{Ma trận nhầm lẫn của mô hình sử dụng bộ tối ưu SGD.}
+    \label{fig:confusion_sdg}
+\end{figure}
+
+\newpage 
+
+% --- PHẦN TOÁN TỐI ƯU ADAM ---
+\subsubsection*{b. Kết quả huấn luyện với hàm tối ưu hóa Adam}
+
+Khi áp dụng hàm tối ưu Adam, đồ thị ACC cho thấy độ chính xác (Accuracy) của mô hình đạt lên đến khoảng 95\% tại epoch = 10 cho cả tập dữ liệu huấn luyện và tập test. Mặc dù đường validation có sự dao động trồi sụt ở các epoch giữa, nhưng đồ thị Loss cuối cùng vẫn cho thấy xu hướng giảm ổn định và tiệm cận về mức thấp quanh 0.40. Kết quả từ đồ thị kết hợp với ma trận nhầm lẫn (Confusion Matrix) phân loại tốt cả 3 lớp (Đeo sai, Đeo đúng, Không đeo) cho thấy mô hình có độ phù hợp tốt, khả năng học đặc trưng mạnh mẽ và không bị hiện tượng quá khớp (over-fitting).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/dothi_adam.png} 
+    \caption{Đồ thị Loss và Accuracy của mô hình sử dụng bộ tối ưu Adam.}
+    \label{fig:dothi_adam}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/report_adam.png} % Đã sửa từ report_adam.png.png thành report_adam.png
+    \caption{Báo cáo hiệu suất phân loại (Classification Report) với Adam.}
+    \label{fig:report_adam}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/confusion_adam.png} 
+    \caption{Ma trận nhầm lẫn của mô hình sử dụng bộ tối ưu Adam.}
+    \label{fig:confusion_adam}
+\end{figure}
+
+\noindent
+\textbf{Nhận xét và so sánh kết quả giữa hai hàm tối ưu SGD và Adam:} \\
+Dựa trên kết quả thực nghiệm phân loại tập dữ liệu khẩu trang, cả hai hàm tối ưu hóa SGD và Adam đều giúp mô hình đạt được độ chính xác (Accuracy) tối đa tương đương nhau, ở mức tiệm cận 95\% tại chu kỳ thứ 10. Tuy nhiên, động lực học hội tụ của hai mô hình có sự khác biệt rõ rệt:
+
+\begin{itemize}
+    \item \textbf{Đối với bộ tối ưu SGD:} Tiến trình giảm lỗi (Loss) và tăng trưởng độ chính xác diễn ra cực kỳ mượt mà, tuyến tính. Cả hai đường train và validation bám sát nhau xuyên suốt 10 epoch, thể hiện trạng thái học tập ổn định hoàn hảo (Good Fit) và không có bất kỳ dấu hiệu biến động lớn nào.
+    \item \textbf{Đối với bộ tối ưu Adam:} Nhờ vào cơ chế tính toán mô-men động lượng và tốc độ học thích ứng, mô hình có xu hướng hội tụ và đạt độ chính xác cao nhanh hơn ở các chu kỳ đầu. Tuy nhiên, đồ thị đường validation lại xuất hiện các hiện tượng dao động trồi sụt mạnh (rõ nhất ở các epoch trung gian từ 5 đến 9). Mặc dù có sự bất ổn định tạm thời trong pha huấn luyện, mạng thần kinh vẫn kịp thời ổn định và hội tụ tốt ở epoch thứ 10.
+\end{itemize}
+
+\noindent
+\textbf{Kết luận:} Để triển khai hệ thống thực tế, bộ tối ưu SGD mang lại một mô hình có độ tin cậy và tính bền vững cao hơn nhờ đường cong học tập ổn định tuyệt đối. Trong khi đó, bộ tối ưu Adam thể hiện sức mạnh trích xuất đặc trưng nhanh nhưng cần được kiểm soát khắt khe hơn về mặt điều chuẩn để giảm thiểu hiện tượng dao động trên tập kiểm thử. Cả hai giải pháp đều hoàn thành xuất sắc nhiệm vụ phân loại chính xác 3 lớp dữ liệu khẩu trang mà không bị quá khớp (over-fitting).
+\subsubsection{Demo kết quả}
+\subsubsection*{a. Trên ảnh}
+\begin{figure}[H] % Thêm dấu ! để ép LaTeX nới lỏng các quy tắc ngầm định
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/demo_anh.png} % ĐÃ XÓA DẤU \\ Ở ĐÂY
+    \caption{Demo trên ảnh}
+    \label{fig:demo_anh}
+\end{figure}
+
+\subsubsection*{b. Trên webcam}
+\begin{figure}[H] % Thêm dấu ! để ép vị trí tốt hơn
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/demo_webcam.png} % ĐÃ XÓA DẤU \\ Ở ĐÂY
+    \caption{Demo trên webcam}
+    \label{fig:demo_webcam}
+\end{figure}
+
+\section{KẾT QUẢ VÀ PHƯƠNG HƯỚNG PHÁT TRIỂN}
+
+\subsection{Kết quả huấn luyện mô hình CNN}
+
+\subsubsection{Ưu điểm}
+Thông qua quá trình thực nghiệm huấn luyện cấu trúc mạng thần kinh tích chập (CNN) với hai bộ tối ưu hóa SGD và Adam, mô hình đạt được các kết quả vượt trội sau:
+\begin{itemize}
+    \item \textbf{Độ chính xác tối ưu:} Mô hình đạt độ chính xác toàn cục (\textit{Accuracy}) ở mức cao ($\approx 95\%$) trên cả tập huấn luyện và tập kiểm thử, đảm bảo năng lực phân loại chính xác 3 trạng thái khuôn mặt (Đeo đúng, Đeo sai và Không đeo khẩu trang).
+    \item \textbf{Tốc độ hội tụ nhanh:} Nhờ vào việc cấu hình phân tách lô dữ liệu (\textit{batch size}) hợp lý và áp dụng tốc độ học (\textit{learning rate}) thích ứng, đồ thị Loss của mô hình giảm thiểu mạnh mẽ và nhanh chóng đi vào trạng thái ổn định ngay từ chu kỳ (\textit{epoch}) thứ 5 đến thứ 10.
+    \item \textbf{Khả năng tổng quát hóa tốt:} Đường cong học tập giữa tập \textit{Train} và \textit{Validation} bám sát nhau, chứng minh cấu trúc mạng kết hợp các kỹ thuật điều chuẩn (\textit{Dropout, Batch Normalization}) đã kiểm soát và triệt tiêu hoàn toàn hiện tượng quá khớp (\textit{Overfitting}).
+\end{itemize}
+
+\subsubsection{Nhược điểm}
+Bên cạnh những kết quả đạt được, hệ thống vẫn tồn tại một số hạn chế kỹ thuật nhất định:
+\begin{itemize}
+    \item \textbf{Độ nhạy cảm với môi trường:} Hiệu năng nhận diện của mô hình có xu hướng suy giảm nhẹ khi thử nghiệm trong các điều kiện ánh sáng yếu, ánh sáng phức tạp (ngược sáng) hoặc khi góc camera bị che khuất một phần.
+    \item \textbf{Chi phí tính toán:} Việc triển khai mạng CNN sâu đòi hỏi năng lực xử lý phần cứng (GPU) tương đối lớn trong pha huấn luyện để đạt được thời gian tối ưu.
+    \item \textbf{Nhầm lẫn ở các góc khuất:} Khi khuôn mặt nghiêng góc quá lớn hoặc bị che bởi các vật thể có màu sắc tương đồng với khẩu trang, ma trận nhầm lẫn đôi khi ghi nhận sự sai lệch giữa hai lớp "Đeo sai" và "Không đeo".
+\end{itemize}
+
+\subsection{Kết quả thử nghiệm thời gian thực trên Webcam}
+Khi tích hợp mô hình CNN đã huấn luyện vào luồng video thời gian thực từ Webcam, hệ thống thực nghiệm cho thấy các tín hiệu rất tích cực:
+\begin{itemize}
+    \item \textbf{Tốc độ phản hồi cao:} Hệ thống đạt được tốc độ xử lý khung hình (\textit{Frame Per Second - FPS}) ổn định, đảm bảo độ trễ thấp khi quét và bao đóng vùng khuôn mặt bằng hộp thoại (\textit{Bounding Box}).
+    \item \textbf{Độ chính xác thực tế ổn định:} Quá trình kiểm thử trực tiếp bằng người thật qua Webcam cho thấy hệ thống phân tách nhạy bén trạng thái đeo khẩu trang ngay khi đối tượng di chuyển hoặc thay đổi khoảng cách so với camera.
+    \item \textbf{Đồng bộ hóa cảnh báo:} Hệ thống liên kết tốt dữ liệu hình ảnh thời gian thực với các logic xử lý biên (như kích hoạt âm thanh cảnh báo hoặc ghi nhận thời gian vi phạm trong các khung hình liên tiếp).
+\end{itemize}
+
+\subsection{Kết luận}
+Đề tài nghiên cứu đã hoàn thành việc xây dựng, tối ưu hóa và thử nghiệm thành công mô hình nhận diện hành vi đeo khẩu trang dựa trên kiến trúc học sâu CNN. Thông qua việc phân tích đối chiếu giữa các hàm tối ưu hóa, nghiên cứu đã tìm ra cấu hình mạng cân bằng nhất giữa độ chính xác và tốc độ xử lý. Hệ thống chứng minh được tính khả thi cao trong việc ứng dụng vào các môi trường giám sát công cộng tự động, hỗ trợ đắc lực cho công tác quản lý an toàn dịch tễ và ý thức cộng đồng mà không cần đến sự can thiệp thủ công của con người.
+
+\subsection{Hướng phát triển của đề tài}
+Để nâng cao toàn diện chất lượng và mở rộng phạm vi ứng dụng của hệ thống, các hướng nghiên cứu tiếp theo sẽ tập trung vào các mục tiêu sau:
+\begin{itemize}
+    \item \textbf{Tích hợp thuật toán theo dõi (Tracking):} Triển khai kết hợp các thuật toán định danh đối tượng thời gian thực như DeepSORT hoặc ByteTRACK để theo dõi nhất quán hành vi của từng cá nhân qua các khung hình, hạn chế việc đếm lặp hoặc mất dấu.
+    \item \textbf{Tối ưu hóa kiến trúc mạng:} Thử nghiệm chuyển đổi sang các kiến trúc mạng nhẹ hơn như MobileNetV3 hoặc YOLOv8-nano nhằm giảm thiểu số lượng tham số, tối ưu hóa tốc độ FPS để sẵn sàng nhúng vào các thiết bị camera thông minh có cấu hình phần cứng hạn chế (\textit{Edge AI}).
+    \item \textbf{Làm giàu bộ dữ liệu thực tế:} Thu thập và làm phong phú thêm tập dữ liệu huấn luyện với các kịch bản thực tế khó hơn như: người đeo kính bị mờ sương, người di chuyển tốc độ cao, hoặc các loại khẩu trang có hoa văn phức tạp nhằm nâng cao độ bền vững (\textit{Robustness}) của mô hình.
+\end{itemize}
+
 
 % ==================== TÀI LIỆU THAM KHẢO ====================
 \printbibliography[title={TÀI LIỆU THAM KHẢO}]
