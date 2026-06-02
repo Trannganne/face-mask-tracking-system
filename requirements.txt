@@ -1,7 +1,19 @@
+# requirements.txt
+
+# Core ML
 torch
 torchvision
+
+# Face detection
 facenet-pytorch
+
+# Tracking
 deep-sort-realtime
+
+# Computer Vision
 opencv-python
-pillow
+
+# Utilities
+Pillow
+numpy
 soundfile

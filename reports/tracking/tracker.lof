@@ -1,0 +1,12 @@
+\babel@toc {vietnamese}{}\relax 
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Sơ đồ luồng xử lý tổng quan của hệ thống}}{15}{}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Phân bố dữ liệu của bộ Face Mask Dataset sau khi chia tập Train, Validation và Test}}{18}{}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Trực quan hóa Feature Map tại các khối tích chập của mô hình MaskCNN}}{20}{}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Đồ thị Loss và Accuracy của mô hình sử dụng bộ tối ưu SGD.}}{27}{}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Báo cáo hiệu suất phân loại (Classification Report) với SGD.}}{28}{}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Ma trận nhầm lẫn của mô hình sử dụng bộ tối ưu SGD.}}{28}{}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Đồ thị Loss và Accuracy của mô hình sử dụng bộ tối ưu Adam.}}{29}{}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Báo cáo hiệu suất phân loại (Classification Report) với Adam.}}{29}{}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Ma trận nhầm lẫn của mô hình sử dụng bộ tối ưu Adam.}}{30}{}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Demo kết quả nhận diện trên ảnh tĩnh.}}{31}{}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Demo kết quả nhận diện và theo dõi trên webcam thời gian thực.}}{31}{}%

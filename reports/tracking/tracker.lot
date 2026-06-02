@@ -1,9 +1,10 @@
 \babel@toc {vietnamese}{}\relax 
-\contentsline {table}{\numberline {3.1}{\ignorespaces Các giai đoạn xử lý tuần tự trong kiến trúc pipeline của hệ thống}}{12}{}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Cấu trúc phân lớp và mô tả các nhãn trong bộ dữ liệu huấn luyện}}{14}{}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces Các kỹ thuật tăng cường dữ liệu và cấu hình tham số áp dụng cho tập huấn luyện}}{15}{}%
-\contentsline {table}{\numberline {3.4}{\ignorespaces Cấu hình phần cứng và phần mềm môi trường huấn luyện}}{16}{}%
-\contentsline {table}{\numberline {3.5}{\ignorespaces Cấu trúc chi tiết các lớp và khối chức năng trong mô hình MaskCNN}}{17}{}%
-\contentsline {table}{\numberline {3.6}{\ignorespaces Cấu hình tham số siêu tham số (Hyperparameters) trong quá trình huấn luyện}}{18}{}%
-\contentsline {table}{\numberline {3.7}{\ignorespaces Nguyên tắc hoạt động và xử lý logic của bộ đếm thời gian (Timer)}}{20}{}%
-\contentsline {table}{\numberline {3.8}{\ignorespaces Các thành phần hiển thị trực quan và cấu hình màu sắc trên giao diện cảnh báo}}{21}{}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Các giai đoạn xử lý tuần tự trong kiến trúc pipeline của hệ thống}}{14}{}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Các lớp dữ liệu trong bộ Face Mask Dataset}}{16}{}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Thống kê số lượng ảnh theo lớp và tập dữ liệu}}{16}{}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces Các kỹ thuật tăng cường dữ liệu áp dụng cho tập huấn luyện}}{17}{}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces Cấu hình phần cứng và phần mềm môi trường huấn luyện}}{18}{}%
+\contentsline {table}{\numberline {3.6}{\ignorespaces Cấu trúc chi tiết mô hình MaskCNN}}{19}{}%
+\contentsline {table}{\numberline {3.7}{\ignorespaces Cấu hình siêu tham số (Hyperparameters) trong quá trình huấn luyện}}{20}{}%
+\contentsline {table}{\numberline {3.8}{\ignorespaces Nguyên tắc hoạt động và xử lý logic của bộ đếm thời gian (Timer)}}{22}{}%
+\contentsline {table}{\numberline {3.9}{\ignorespaces Các thành phần hiển thị trực quan và cấu hình màu sắc trên giao diện cảnh báo}}{23}{}%
