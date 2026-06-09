@@ -8,5 +8,5 @@
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Đồ thị Loss và Accuracy của mô hình sử dụng bộ tối ưu Adam.}}{29}{}%
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Báo cáo hiệu suất phân loại (Classification Report) với Adam.}}{29}{}%
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Ma trận nhầm lẫn của mô hình sử dụng bộ tối ưu Adam.}}{30}{}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Demo kết quả nhận diện trên ảnh tĩnh.}}{31}{}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Demo kết quả nhận diện và theo dõi trên webcam thời gian thực.}}{31}{}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces So sánh kết quả nhận diện trên ảnh tĩnh giữa mô hình sử dụng Adam và SGD.}}{31}{}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Demo kết quả nhận diện và theo dõi trên webcam thời gian thực.}}{32}{}%

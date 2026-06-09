@@ -743,7 +743,8 @@ Optimizer (so sánh) & SGD (lr=0.01, momentum=0.9, weight\_decay=1e-4) \\ \hline
 Loss function & CrossEntropyLoss với label\_smoothing=0.1 \\ \hline
 Learning Rate Scheduler & ReduceLROnPlateau (factor=0.5, patience=2, mode='min') \\ \hline
 DataLoader workers & 2 (num\_workers=2) \\ \hline
-Max ảnh mỗi lớp & 5.000 ảnh (cân bằng dataset) \\ \hline
+Max ảnh mỗi lớp & 3.200 ảnh (cân bằng dataset) \\ \hline
+Lọc ảnh đầu vào & Loại bỏ ảnh có cạnh ngắn $< 64$ px \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -939,7 +940,7 @@ Trong các bài toán Học sâu (Deep Learning), việc đánh giá quá trình
 
 \subsubsection*{a. Kết quả huấn luyện với hàm tối ưu hóa SGD}
 
-Khi áp dụng hàm tối ưu SGD, đồ thị ACC cho thấy độ chính xác (Accuracy) đạt lên đến khoảng 95\% và bắt đầu đi vào trạng thái ổn định khi epoch = 10 cho cả tập dữ liệu huấn luyện và tập test. Song song đó, đồ thị Loss cũng cho thấy sau mức này, độ mất mát của cả tập train và validation đều giảm tối đa và đi ngang. Kết quả thực nghiệm này minh chứng mô hình đạt được độ phù hợp tốt, có khả năng tổng quát hóa cao và hoàn toàn không bị hiện tượng quá khớp (over-fitting).
+Khi áp dụng hàm tối ưu SGD sau khi lọc ảnh $< 64$ px, mô hình được huấn luyện trong 24 epochs và cho kết quả đáng chú ý. Đồ thị Accuracy cho thấy độ chính xác Validation ($\approx 95\%$) vượt trội hơn Train Accuracy ($\approx 94.5\%$) và cả hai đều hội tụ ổn định. Đồ thị Loss cũng thể hiện Validation Loss ($\approx 0.38$) thấp hơn Train Loss ($\approx 0.42$), hội tụ một cách đều đặn qua các epoch. Hiện tượng Validation vượt Training là hoàn toàn bình thường trong kiến trúc sử dụng Dropout, do Dropout tắt ngẫu nhiên các neurons trong pha huấn luyện (làm yếu mô hình có chủ ý) nhưng bị vô hiệu hóa hoàn toàn trong pha đánh giá. Kết quả này chứng minh mô hình không bị quá khớp (\textit{overfitting}) và có khả năng tổng quát hóa tốt trên dữ liệu mới.
 
 \begin{figure}[htbp]
     \centering
@@ -968,7 +969,7 @@ Khi áp dụng hàm tối ưu SGD, đồ thị ACC cho thấy độ chính xác 
 
 \subsubsection*{b. Kết quả huấn luyện với hàm tối ưu hóa Adam}
 
-Khi áp dụng hàm tối ưu Adam, đồ thị ACC cho thấy độ chính xác (Accuracy) của mô hình đạt lên đến khoảng 95\% tại epoch = 10 cho cả tập dữ liệu huấn luyện và tập test. Mặc dù đường validation có sự dao động trồi sụt ở các epoch giữa, nhưng đồ thị Loss cuối cùng vẫn cho thấy xu hướng giảm ổn định và tiệm cận về mức thấp quanh 0.40. Kết quả từ đồ thị kết hợp với ma trận nhầm lẫn (Confusion Matrix) phân loại tốt cả 3 lớp (Đeo sai, Đeo đúng, Không đeo) cho thấy mô hình có độ phù hợp tốt, khả năng học đặc trưng mạnh mẽ và không bị hiện tượng quá khớp (over-fitting).
+Khi áp dụng hàm tối ưu Adam sau khi lọc ảnh $< 64$ px, quá trình huấn luyện dừng sớm sau 12 epochs do cơ chế Early Stopping kích hoạt. Đồ thị Accuracy cho thấy Validation Accuracy ($\approx 94\%$) nhỉnh hơn Train Accuracy ($\approx 93.5\%$). Tương tự như SGD, hiện tượng Validation vượt Training là bình thường do cơ chế Dropout. Tuy nhiên, Validation Accuracy có sự dao động (\textit{noisy}) rõ hơn, đặc biệt ở các epoch đầu, do bản chất tốc độ học thích ứng của Adam khiến mô hình hội tụ nhanh hơn nhưng kém ổn định hơn trong giai đoạn tinh chỉnh. Mô hình vẫn hội tụ tốt và không có dấu hiệu quá khớp.
 
 \begin{figure}[htbp]
     \centering
@@ -993,23 +994,64 @@ Khi áp dụng hàm tối ưu Adam, đồ thị ACC cho thấy độ chính xác
 
 \noindent
 \textbf{Nhận xét và so sánh kết quả giữa hai hàm tối ưu SGD và Adam:} \\
-Dựa trên kết quả thực nghiệm phân loại tập dữ liệu khẩu trang, cả hai hàm tối ưu hóa SGD và Adam đều giúp mô hình đạt được độ chính xác (Accuracy) tối đa tương đương nhau, ở mức tiệm cận 95\% tại chu kỳ thứ 10. Tuy nhiên, động lực học hội tụ của hai mô hình có sự khác biệt rõ rệt:
+Dựa trên kết quả thực nghiệm sau khi loại bỏ ảnh chất lượng thấp ($< 64$ px), cả hai bộ tối ưu hóa SGD và Adam đều giúp mô hình đạt độ chính xác Validation $\approx 94$--$95\%$. Điểm đặc biệt ở cả hai mô hình là Validation Loss thấp hơn Train Loss và Validation Accuracy cao hơn Train Accuracy -- đây là hiện tượng bình thường do ảnh hưởng của Dropout và cách tính loss online trong epoch, không phải dấu hiệu lỗi. Tuy nhiên, động lực học hội tụ của hai mô hình có sự khác biệt rõ rệt:
 
 \begin{itemize}
-    \item \textbf{Đối với bộ tối ưu SGD:} Tiến trình giảm lỗi (Loss) và tăng trưởng độ chính xác diễn ra cực kỳ mượt mà, tuyến tính. Cả hai đường train và validation bám sát nhau xuyên suốt các epoch, thể hiện trạng thái học tập ổn định hoàn hảo (Good Fit) và không có bất kỳ dấu hiệu biến động lớn nào.
-    \item \textbf{Đối với bộ tối ưu Adam:} Nhờ vào cơ chế tính toán mô-men động lượng và tốc độ học thích ứng, mô hình có xu hướng hội tụ và đạt độ chính xác cao nhanh hơn ở các chu kỳ đầu. Tuy nhiên, đồ thị đường validation lại xuất hiện các hiện tượng dao động trồi sụt mạnh (rõ nhất ở các epoch trung gian từ 5 đến 9). Mặc dù có sự bất ổn định tạm thời trong pha huấn luyện, mạng thần kinh vẫn kịp thời ổn định và hội tụ tốt ở epoch thứ 10.
+    \item \textbf{Đối với bộ tối ưu SGD:} Tiến trình giảm lỗi (Loss) và tăng trưởng độ chính xác diễn ra mượt mà, ổn định trong 24 epochs. Đường Validation hội tụ đều đặn, thể hiện trạng thái học tập ổn định (\textit{Good Fit}) nhất quán.
+    \item \textbf{Đối với bộ tối ưu Adam:} Nhờ cơ chế tốc độ học thích ứng, mô hình hội tụ nhanh hơn và Early Stopping kích hoạt sớm sau 12 epochs. Tuy nhiên, đồ thị Validation Accuracy có độ dao động cao hơn SGD, cho thấy Adam cần kiểm soát điều chuẩn chặt chẽ hơn để đạt được sự ổn định tương đương.
 \end{itemize}
 
 \noindent
-\textbf{Kết luận:} Để triển khai hệ thống thực tế, bộ tối ưu SGD mang lại một mô hình có độ tin cậy và tính bền vững cao hơn nhờ đường cong học tập ổn định tuyệt đối. Trong khi đó, bộ tối ưu Adam thể hiện sức mạnh trích xuất đặc trưng nhanh nhưng cần được kiểm soát khắt khe hơn về mặt điều chuẩn để giảm thiểu hiện tượng dao động trên tập kiểm thử. Cả hai giải pháp đều hoàn thành xuất sắc nhiệm vụ phân loại chính xác 3 lớp dữ liệu khẩu trang mà không bị quá khớp (over-fitting).
+\textbf{Kết luận:} Để triển khai hệ thống thực tế, bộ tối ưu SGD mang lại mô hình có độ tin cậy và tính bền vững cao hơn nhờ đường cong học tập ổn định tuyệt đối. Adam thể hiện sức mạnh hội tụ nhanh nhưng cần kiểm soát khắt khe hơn về mặt điều chuẩn. Cả hai mô hình đều không bị quá khớp (\textit{overfitting}) và hoàn thành tốt nhiệm vụ phân loại chính xác 3 lớp dữ liệu khẩu trang.
 
 \subsubsection{Demo kết quả}
 \subsubsection*{a. Trên ảnh}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{figures/demo_anh.png}
-    \caption{Demo kết quả nhận diện trên ảnh tĩnh.}
-    \label{fig:demo_anh}
+
+    % Hàng 1
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{giamanhbe/saugiam_adam1.png}
+        \caption*{(a) Adam - Ảnh 1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{giamanhbe/saugiam_sgd2.png}
+        \caption*{(b) SGD - Ảnh 1}
+    \end{minipage}
+
+    \vspace{0.5cm}
+
+    % Hàng 2
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{giamanhbe/saugiam_adam3.png}
+        \caption*{(c) Adam - Ảnh 2}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{giamanhbe/saugiam_sgd3.png}
+        \caption*{(d) SGD - Ảnh 2}
+    \end{minipage}
+
+    % Hàng 3
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{giamanhbe/saugiam_adam5.png}
+        \caption*{(c) Adam - Ảnh 3}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{giamanhbe/saugiam_sgd5.png}
+        \caption*{(d) SGD - Ảnh 3}
+    \end{minipage}
+
+    \caption{So sánh kết quả nhận diện trên ảnh tĩnh giữa mô hình sử dụng Adam và SGD.}
+    \label{fig:compare_all}
 \end{figure}
 
 \subsubsection*{b. Trên webcam}
