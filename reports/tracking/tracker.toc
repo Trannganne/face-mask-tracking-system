@@ -21,15 +21,16 @@
 \contentsline {subsection}{\numberline {3.1}Kiến trúc tổng quan}{14}{}%
 \contentsline {subsection}{\numberline {3.2}Xây dựng và tiền xử lý bộ dữ liệu (dataset)}{15}{}%
 \contentsline {subsubsection}{\numberline {3.2.1}Thu thập dữ liệu}{15}{}%
-\contentsline {subsubsection}{\numberline {3.2.2}Gán nhãn dữ liệu}{17}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}Lọc ảnh chất lượng thấp}{16}{}%
+\contentsline {subsubsection}{\numberline {3.2.3}Gán nhãn dữ liệu}{17}{}%
 \contentsline {subsection}{\numberline {3.3}Quá trình huấn luyện mô hình CNN}{18}{}%
 \contentsline {subsubsection}{\numberline {3.3.1}Môi trường cấu hình}{18}{}%
 \contentsline {subsubsection}{\numberline {3.3.2}Kiến trúc mô hình MaskCNN}{19}{}%
-\contentsline {subsubsection}{\numberline {3.3.3}Tham số huấn luyện}{20}{}%
-\contentsline {subsection}{\numberline {3.4}Triển khai module theo dõi và cấu hình logic cảnh báo}{21}{}%
-\contentsline {subsubsection}{\numberline {3.4.1}Tích hợp CNN với DeepSORT}{21}{}%
+\contentsline {subsubsection}{\numberline {3.3.3}Tham số huấn luyện}{21}{}%
+\contentsline {subsection}{\numberline {3.4}Triển khai module theo dõi và cấu hình logic cảnh báo}{22}{}%
+\contentsline {subsubsection}{\numberline {3.4.1}Tích hợp CNN với DeepSORT}{22}{}%
 \contentsline {subsubsection}{\numberline {3.4.2}Xây dựng thuật toán đếm thời gian (Timer) theo ID đối tượng}{22}{}%
-\contentsline {subsubsection}{\numberline {3.4.3}Cơ chế kích hoạt cảnh báo}{22}{}%
+\contentsline {subsubsection}{\numberline {3.4.3}Cơ chế kích hoạt cảnh báo}{23}{}%
 \contentsline {section}{\numberline {4}CHƯƠNG 4: CHƯƠNG TRÌNH THỰC NGHIỆM}{25}{}%
 \contentsline {subsection}{\numberline {4.1}Chỉ số đánh giá hiệu suất}{25}{}%
 \contentsline {subsection}{\numberline {4.2}Tiêu chí đánh giá mô hình}{26}{}%

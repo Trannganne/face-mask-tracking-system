@@ -365,6 +365,25 @@ Người không đeo khẩu trang.
 \end{tabularx}
 \end{table}
 
+\subsubsection{Lọc ảnh chất lượng thấp}
+ 
+Trước khi tiến hành chia tập dữ liệu, một bước tiền xử lý quan trọng được thực hiện là loại bỏ toàn bộ các ảnh có kích thước nhỏ hơn $64 \times 64$ pixels. Các ảnh có độ phân giải thấp thường chứa rất ít thông tin đặc trưng hữu ích về khuôn mặt, gây nhiễu và làm giảm chất lượng quá trình học của mô hình. Việc loại bỏ các ảnh này giúp cải thiện đáng kể chất lượng tập dữ liệu và khả năng tổng quát hóa của mô hình.
+ 
+Quá trình lọc được thực hiện bằng đoạn mã Python sử dụng thư viện \texttt{PIL} và \texttt{pathlib}:
+ 
+\begin{verbatim}
+for img_path in Path(DATASET_ROOT).rglob("*"):
+    if img_path.suffix.lower() not in \
+        [".jpg", ".jpeg", ".png", ".bmp", ".webp"]:
+        continue
+    with Image.open(img_path) as img:
+        w, h = img.size
+    if min(w, h) < 64:
+        os.remove(img_path)
+\end{verbatim}
+ 
+Sau bước lọc này, toàn bộ ảnh còn lại đều đảm bảo cạnh ngắn nhất tối thiểu là 64 pixels, đảm bảo chất lượng đầu vào đồng nhất cho quá trình huấn luyện.
+
 Toàn bộ dữ liệu được chia ngẫu nhiên theo tỷ lệ 70\%-15\%-15\% tương ứng cho ba tập dữ liệu:
 
 \begin{itemize}
@@ -385,14 +404,14 @@ Thống kê phân phối dữ liệu thực tế sau khi chia tập được tr�
 \hline
 \rowcolor{headerblue}
 \textbf{\color{white}Lớp} & \textbf{\color{white}Train} & \textbf{\color{white}Validation} & \textbf{\color{white}Test} & \textbf{\color{white}Tổng} \\ \hline
-Incorrect Mask (Class 0) & 3.524 & 754 & 722 & 5.000 \\ \hline
-With Mask (Class 1)      & 3.367 & 734 & 688 & 4.789 \\ \hline
-Without Mask (Class 2)   & 3.284 & 692 & 771 & 4.747 \\ \hline
-\textbf{Tổng}            & \textbf{10.175} & \textbf{2.180} & \textbf{2.181} & \textbf{14.536} \\ \hline
+Incorrect Mask (Class 0) & 3.200 & 723 & 752 & 4.675 \\ \hline
+With Mask (Class 1)      & 3.200 & 700 & 695 & 4.595 \\ \hline
+Without Mask (Class 2)   & 3.200 & 732 & 709 & 4.641 \\ \hline
+\textbf{Tổng}            & \textbf{9.600} & \textbf{2.155} & \textbf{2.156} & \textbf{14.536} \\ \hline
 \end{tabularx}
 \end{table}
 
-Để hạn chế hiện tượng mất cân bằng dữ liệu giữa các lớp, hệ thống sử dụng hàm \texttt{limit\_dataset\_per\_class()} nhằm giới hạn số lượng ảnh tối đa của mỗi lớp. Trong quá trình thực nghiệm, giá trị \texttt{max\_per\_class} được thiết lập bằng 5.000. Nếu số lượng ảnh của một lớp vượt quá ngưỡng này, các mẫu sẽ được lựa chọn ngẫu nhiên (\textit{Random Sampling}) để đảm bảo sự cân bằng tương đối giữa các lớp dữ liệu.
+Để hạn chế hiện tượng mất cân bằng dữ liệu giữa các lớp, hệ thống sử dụng hàm \texttt{limit\_dataset\_per\_class()} nhằm giới hạn số lượng ảnh tối đa của mỗi lớp. Trong quá trình thực nghiệm, giá trị \texttt{max\_per\_class} được thiết lập bằng 3.200. Nếu số lượng ảnh của một lớp vượt quá ngưỡng này, các mẫu sẽ được lựa chọn ngẫu nhiên (\textit{Random Sampling}) với seed cố định (\texttt{random.seed(42)})nhằm đảm bảo tính tái lặp và cân bằng tương đối giữa các lớp dữ liệu.
 
 \subsubsection{Gán nhãn dữ liệu}
 
@@ -454,11 +473,12 @@ Mô phỏng các góc quay khác nhau của khuôn mặt.
 
 ColorJitter
 &
-Brightness = 0.2 \newline
-Contrast = 0.2 \newline
-Saturation = 0.2
+Brightness = 0.3 \newline
+Contrast = 0.3 \newline
+Saturation = 0.3 \newline
+Hue = 0.1
 &
-Mô phỏng các điều kiện ánh sáng khác nhau trong thực tế.
+Mô phỏng các điều kiện ánh sáng khác nhau trong thực tế(camera giám sát góc cao, ngược sáng, ánh đèn huỳnh quang), chống hiện tượng rò rỉ đặc trưng ánh sáng (\textit{lighting leakage}).
 \\ \hline
 
 Normalize
@@ -479,13 +499,13 @@ Chuẩn hóa dữ liệu theo thống kê ImageNet giúp quá trình huấn luy�
 
 \begin{subfigure}{0.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/chitietsoluong.png}
+    \includegraphics[width=\textwidth]{giamanhbe/chitietsoluong.png}
     \caption{Thống kê số lượng ảnh của từng lớp}
 \end{subfigure}
 \hfill
 \begin{subfigure}{0.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/trucquan_dataset.png}
+    \includegraphics[width=\textwidth]{giamanhbe/trucquan_dataset.png}
     \caption{Biểu đồ phân bố dữ liệu}
 \end{subfigure}
 
@@ -923,7 +943,7 @@ Khi áp dụng hàm tối ưu SGD, đồ thị ACC cho thấy độ chính xác 
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/dothi_sdg.png}
+    \includegraphics[width=0.9\textwidth]{giamanhbe/SGD_training_history.png}
     \caption{Đồ thị Loss và Accuracy của mô hình sử dụng bộ tối ưu SGD.}
     \label{fig:dothi_sdg}
 \end{figure}
@@ -931,7 +951,7 @@ Khi áp dụng hàm tối ưu SGD, đồ thị ACC cho thấy độ chính xác 
 \noindent\textbf{Đánh giá hiệu suất mô hình:}
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/report_sdg.png}
+    \includegraphics[width=0.8\textwidth]{giamanhbe/report_sgd.png}
     \caption{Báo cáo hiệu suất phân loại (Classification Report) với SGD.}
     \label{fig:report_sdg}
 \end{figure}
@@ -939,7 +959,7 @@ Khi áp dụng hàm tối ưu SGD, đồ thị ACC cho thấy độ chính xác 
 \noindent\textbf{Ma trận nhầm lẫn (Confusion matrix):}
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.75\textwidth]{figures/confusion_sdg.png}
+    \includegraphics[width=0.75\textwidth]{giamanhbe/SGD_confusion_matrix.png}
     \caption{Ma trận nhầm lẫn của mô hình sử dụng bộ tối ưu SGD.}
     \label{fig:confusion_sdg}
 \end{figure}
@@ -952,21 +972,21 @@ Khi áp dụng hàm tối ưu Adam, đồ thị ACC cho thấy độ chính xác
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/dothi_adam.png} 
+    \includegraphics[width=0.9\textwidth]{giamanhbe/Adam_training_history.png} 
     \caption{Đồ thị Loss và Accuracy của mô hình sử dụng bộ tối ưu Adam.}
     \label{fig:dothi_adam}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/report_adam.png}
+    \includegraphics[width=0.8\textwidth]{giamanhbe/report_adam.png}
     \caption{Báo cáo hiệu suất phân loại (Classification Report) với Adam.}
     \label{fig:report_adam}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.75\textwidth]{figures/confusion_adam.png} 
+    \includegraphics[width=0.75\textwidth]{giamanhbe/Adam_confusion_matrix.png} 
     \caption{Ma trận nhầm lẫn của mô hình sử dụng bộ tối ưu Adam.}
     \label{fig:confusion_adam}
 \end{figure}
