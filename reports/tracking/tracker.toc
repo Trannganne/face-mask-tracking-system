@@ -1,47 +1,48 @@
 \babel@toc {vietnamese}{}\relax 
 \contentsline {section}{LỜI CẢM ƠN}{2}{}%
-\contentsline {section}{DANH MỤC BẢNG BIỂU}{5}{}%
-\contentsline {section}{DANH MỤC HÌNH ẢNH}{6}{}%
-\contentsline {section}{LỜI MỞ ĐẦU}{7}{}%
-\contentsline {section}{\numberline {1}CHƯƠNG 1: MỞ ĐẦU}{9}{}%
-\contentsline {subsection}{\numberline {1.1}Lý do chọn đề tài}{9}{}%
-\contentsline {subsection}{\numberline {1.2}Mục tiêu nghiên cứu}{9}{}%
-\contentsline {subsubsection}{\numberline {1.2.1}Mục tiêu tổng quát}{9}{}%
-\contentsline {subsubsection}{\numberline {1.2.2}Mục tiêu cụ thể}{9}{}%
-\contentsline {section}{\numberline {2}CHƯƠNG 2: TỔNG QUAN CƠ SỞ LÝ THUYẾT}{11}{}%
-\contentsline {subsection}{\numberline {2.1}Mạng nơ-ron tích chập (Convolutional Neural Network -- CNN)}{11}{}%
-\contentsline {subsubsection}{\numberline {2.1.1}Feature trong CNN}{11}{}%
-\contentsline {subsubsection}{\numberline {2.1.2}Những lớp cơ bản của mạng CNN}{11}{}%
-\contentsline {subsection}{\numberline {2.2}Thuật toán theo dõi đối tượng đa mục tiêu DeepSORT}{12}{}%
-\contentsline {subsubsection}{\numberline {2.2.1}Bài toán theo dõi đối tượng (Object Tracking)}{12}{}%
-\contentsline {subsubsection}{\numberline {2.2.2}Bộ lọc Kalman (Kalman Filter)}{12}{}%
-\contentsline {subsubsection}{\numberline {2.2.3}Thuật toán Hungary (Hungarian Algorithm)}{13}{}%
-\contentsline {subsubsection}{\numberline {2.2.4}Mạng nhúng sâu (Deep Appearance Descriptor)}{13}{}%
-\contentsline {section}{\numberline {3}CHƯƠNG 3: THIẾT KẾ VÀ XÂY DỰNG}{14}{}%
-\contentsline {subsection}{\numberline {3.1}Kiến trúc tổng quan}{14}{}%
-\contentsline {subsection}{\numberline {3.2}Xây dựng và tiền xử lý bộ dữ liệu (dataset)}{15}{}%
-\contentsline {subsubsection}{\numberline {3.2.1}Thu thập dữ liệu}{15}{}%
-\contentsline {subsubsection}{\numberline {3.2.2}Lọc ảnh chất lượng thấp}{16}{}%
-\contentsline {subsubsection}{\numberline {3.2.3}Gán nhãn dữ liệu}{17}{}%
-\contentsline {subsection}{\numberline {3.3}Quá trình huấn luyện mô hình CNN}{18}{}%
-\contentsline {subsubsection}{\numberline {3.3.1}Môi trường cấu hình}{18}{}%
-\contentsline {subsubsection}{\numberline {3.3.2}Kiến trúc mô hình MaskCNN}{19}{}%
-\contentsline {subsubsection}{\numberline {3.3.3}Tham số huấn luyện}{21}{}%
-\contentsline {subsection}{\numberline {3.4}Triển khai module theo dõi và cấu hình logic cảnh báo}{22}{}%
-\contentsline {subsubsection}{\numberline {3.4.1}Tích hợp CNN với DeepSORT}{22}{}%
-\contentsline {subsubsection}{\numberline {3.4.2}Xây dựng thuật toán đếm thời gian (Timer) theo ID đối tượng}{22}{}%
-\contentsline {subsubsection}{\numberline {3.4.3}Cơ chế kích hoạt cảnh báo}{23}{}%
-\contentsline {section}{\numberline {4}CHƯƠNG 4: CHƯƠNG TRÌNH THỰC NGHIỆM}{25}{}%
-\contentsline {subsection}{\numberline {4.1}Chỉ số đánh giá hiệu suất}{25}{}%
-\contentsline {subsection}{\numberline {4.2}Tiêu chí đánh giá mô hình}{26}{}%
-\contentsline {subsection}{\numberline {4.3}Kết quả thực nghiệm}{27}{}%
-\contentsline {subsubsection}{\numberline {4.3.1}So sánh hàm tối ưu SGD và Adam}{27}{}%
-\contentsline {subsubsection}{\numberline {4.3.2}Demo kết quả}{31}{}%
-\contentsline {section}{\numberline {5}CHƯƠNG 5: KẾT QUẢ VÀ HƯỚNG PHÁT TRIỂN}{33}{}%
-\contentsline {subsection}{\numberline {5.1}Kết quả huấn luyện mô hình CNN}{33}{}%
-\contentsline {subsubsection}{\numberline {5.1.1}Ưu điểm}{33}{}%
-\contentsline {subsubsection}{\numberline {5.1.2}Nhược điểm}{33}{}%
-\contentsline {subsection}{\numberline {5.2}Kết quả thử nghiệm thời gian thực trên Webcam}{33}{}%
-\contentsline {subsection}{\numberline {5.3}Kết luận}{34}{}%
-\contentsline {subsection}{\numberline {5.4}Hướng phát triển của đề tài}{34}{}%
-\contentsline {section}{TÀI LIỆU THAM KHẢO}{36}{}%
+\contentsline {section}{BẢNG PHÂN CÔNG NHIỆM VỤ}{3}{}%
+\contentsline {section}{DANH MỤC BẢNG BIỂU}{6}{}%
+\contentsline {section}{DANH MỤC HÌNH ẢNH}{7}{}%
+\contentsline {section}{LỜI MỞ ĐẦU}{8}{}%
+\contentsline {section}{\numberline {1}CHƯƠNG 1: MỞ ĐẦU}{10}{}%
+\contentsline {subsection}{\numberline {1.1}Lý do chọn đề tài}{10}{}%
+\contentsline {subsection}{\numberline {1.2}Mục tiêu nghiên cứu}{10}{}%
+\contentsline {subsubsection}{\numberline {1.2.1}Mục tiêu tổng quát}{10}{}%
+\contentsline {subsubsection}{\numberline {1.2.2}Mục tiêu cụ thể}{10}{}%
+\contentsline {section}{\numberline {2}CHƯƠNG 2: TỔNG QUAN CƠ SỞ LÝ THUYẾT}{12}{}%
+\contentsline {subsection}{\numberline {2.1}Mạng nơ-ron tích chập (Convolutional Neural Network -- CNN)}{12}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}Feature trong CNN}{12}{}%
+\contentsline {subsubsection}{\numberline {2.1.2}Những lớp cơ bản của mạng CNN}{12}{}%
+\contentsline {subsection}{\numberline {2.2}Thuật toán theo dõi đối tượng đa mục tiêu DeepSORT}{13}{}%
+\contentsline {subsubsection}{\numberline {2.2.1}Bài toán theo dõi đối tượng (Object Tracking)}{13}{}%
+\contentsline {subsubsection}{\numberline {2.2.2}Bộ lọc Kalman (Kalman Filter)}{13}{}%
+\contentsline {subsubsection}{\numberline {2.2.3}Thuật toán Hungary (Hungarian Algorithm)}{14}{}%
+\contentsline {subsubsection}{\numberline {2.2.4}Mạng nhúng sâu (Deep Appearance Descriptor)}{14}{}%
+\contentsline {section}{\numberline {3}CHƯƠNG 3: THIẾT KẾ VÀ XÂY DỰNG}{15}{}%
+\contentsline {subsection}{\numberline {3.1}Kiến trúc tổng quan}{15}{}%
+\contentsline {subsection}{\numberline {3.2}Xây dựng và tiền xử lý bộ dữ liệu (dataset)}{16}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Thu thập dữ liệu}{16}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}Lọc ảnh chất lượng thấp}{17}{}%
+\contentsline {subsubsection}{\numberline {3.2.3}Gán nhãn dữ liệu}{18}{}%
+\contentsline {subsection}{\numberline {3.3}Quá trình huấn luyện mô hình CNN}{19}{}%
+\contentsline {subsubsection}{\numberline {3.3.1}Môi trường cấu hình}{19}{}%
+\contentsline {subsubsection}{\numberline {3.3.2}Kiến trúc mô hình MaskCNN}{20}{}%
+\contentsline {subsubsection}{\numberline {3.3.3}Tham số huấn luyện}{22}{}%
+\contentsline {subsection}{\numberline {3.4}Triển khai module theo dõi và cấu hình logic cảnh báo}{23}{}%
+\contentsline {subsubsection}{\numberline {3.4.1}Tích hợp CNN với DeepSORT}{23}{}%
+\contentsline {subsubsection}{\numberline {3.4.2}Xây dựng thuật toán đếm thời gian (Timer) theo ID đối tượng}{23}{}%
+\contentsline {subsubsection}{\numberline {3.4.3}Cơ chế kích hoạt cảnh báo}{24}{}%
+\contentsline {section}{\numberline {4}CHƯƠNG 4: CHƯƠNG TRÌNH THỰC NGHIỆM}{26}{}%
+\contentsline {subsection}{\numberline {4.1}Chỉ số đánh giá hiệu suất}{26}{}%
+\contentsline {subsection}{\numberline {4.2}Tiêu chí đánh giá mô hình}{27}{}%
+\contentsline {subsection}{\numberline {4.3}Kết quả thực nghiệm}{28}{}%
+\contentsline {subsubsection}{\numberline {4.3.1}So sánh hàm tối ưu SGD và Adam}{28}{}%
+\contentsline {subsubsection}{\numberline {4.3.2}Demo kết quả}{32}{}%
+\contentsline {section}{\numberline {5}CHƯƠNG 5: KẾT QUẢ VÀ HƯỚNG PHÁT TRIỂN}{34}{}%
+\contentsline {subsection}{\numberline {5.1}Kết quả huấn luyện mô hình CNN}{34}{}%
+\contentsline {subsubsection}{\numberline {5.1.1}Ưu điểm}{34}{}%
+\contentsline {subsubsection}{\numberline {5.1.2}Nhược điểm}{34}{}%
+\contentsline {subsection}{\numberline {5.2}Kết quả thử nghiệm thời gian thực trên Webcam}{35}{}%
+\contentsline {subsection}{\numberline {5.3}Kết luận}{35}{}%
+\contentsline {subsection}{\numberline {5.4}Hướng phát triển của đề tài}{35}{}%
+\contentsline {section}{TÀI LIỆU THAM KHẢO}{37}{}%

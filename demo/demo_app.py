@@ -46,7 +46,7 @@ class FaceMaskApp(tk.Tk):
 
         # Path vars
         _root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-        self.model_path = tk.StringVar(value=os.path.join(_root, "models", "weights(saugiam)", "best_model_adam.pth"))
+        self.model_path = tk.StringVar(value=os.path.join(_root, "models", "weights(saugiam)", "best_model_sgd.pth"))
         self.image_path  = tk.StringVar(value="")
         self.video_path  = tk.StringVar(value="")
         self.output_path = tk.StringVar(value="output.mp4")

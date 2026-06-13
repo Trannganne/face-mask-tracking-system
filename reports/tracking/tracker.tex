@@ -156,6 +156,39 @@ Do giới hạn về mặt thời gian và trải nghiệm thực tế, bài bá
 \hspace{1cm} 
 \end{flushright}
 
+% ==================== BẢNG PHÂN CÔNG NHIỆM VỤ ====================
+\newpage
+\addcontentsline{toc}{section}{BẢNG PHÂN CÔNG NHIỆM VỤ}
+\begin{center}
+    {\fontsize{16pt}{20pt}\selectfont \textbf{BẢNG PHÂN CÔNG NHIỆM VỤ}}
+\end{center}
+
+\vspace{1cm}
+
+\fontsize{12pt}{16pt}\selectfont
+\setlength{\parindent}{0cm}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\textwidth}{|l|X|c|}
+\hline
+\textbf{Thành viên} & \textbf{Nhiệm vụ} & \textbf{Đóng góp} \\
+\hline
+Phạm Nguyễn Hồng Ngọc & Chuẩn bị dữ liệu, tiền xử lý dữ liệu, Augmentation dữ liệu, chuẩn bị PowerPoint & 25\% \\
+\hline
+Nguyễn Duy Hưng & Xây dựng module xử lý video bằng OpenCV, viết giao diện cho mô hình có upload ảnh và video, chuẩn bị PowerPoint & 24\% \\
+\hline
+Trần Quốc Trường & Tìm hiểu và nghiên cứu mô hình CNN, xây dựng module PersonTracker tích hợp DeepSORT, viết hàm xử lý video sau khi train model, viết báo cáo Latex & 25\% \\
+\hline
+Trần Thị Kim Ngân & Xây dựng mô hình CNN tùy chỉnh nhận diện các trạng thái mang/không mang khẩu trang. Huấn luyện và tối ưu mô hình. Chỉnh sửa dataset cho phù hợp. Đánh giá mô hình. Tích hợp Deepsort theo dõi ID. Viết báo cáo. Gộp code, tổng hợp báo cáo. & 26\% \\
+\hline
+\hline
+\textbf{Tổng} & & \textbf{100\%} \\
+\hline
+\end{tabularx}
+\end{table}
+
 % ==================== TRANG 4: MỤC LỤC ====================
 \newpage
 
@@ -985,7 +1018,7 @@ Khi áp dụng hàm tối ưu Adam sau khi lọc ảnh $< 64$ px, quá trình hu
     \label{fig:report_adam}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{giamanhbe/Adam_confusion_matrix.png} 
     \caption{Ma trận nhầm lẫn của mô hình sử dụng bộ tối ưu Adam.}
@@ -1003,7 +1036,7 @@ Dựa trên kết quả thực nghiệm sau khi loại bỏ ảnh chất lượn
 
 \noindent
 \textbf{Kết luận:} Để triển khai hệ thống thực tế, bộ tối ưu SGD mang lại mô hình có độ tin cậy và tính bền vững cao hơn nhờ đường cong học tập ổn định tuyệt đối. Adam thể hiện sức mạnh hội tụ nhanh nhưng cần kiểm soát khắt khe hơn về mặt điều chuẩn. Cả hai mô hình đều không bị quá khớp (\textit{overfitting}) và hoàn thành tốt nhiệm vụ phân loại chính xác 3 lớp dữ liệu khẩu trang.
-
+Mã nguồn dự án được công khai tại: \url{https://github.com/Trannganne/face-mask-tracking-system.git}
 \subsubsection{Demo kết quả}
 \subsubsection*{a. Trên ảnh}
 \begin{figure}[H]
@@ -1071,8 +1104,8 @@ Dựa trên kết quả thực nghiệm sau khi loại bỏ ảnh chất lượn
 Thông qua quá trình thực nghiệm huấn luyện cấu trúc mạng thần kinh tích chập (CNN) với hai bộ tối ưu hóa SGD và Adam, mô hình đạt được các kết quả vượt trội sau:
 \begin{itemize}
     \item \textbf{Độ chính xác tối ưu:} Mô hình đạt độ chính xác toàn cục (\textit{Accuracy}) ở mức cao ($\approx 95\%$) trên cả tập huấn luyện và tập kiểm thử, đảm bảo năng lực phân loại chính xác 3 trạng thái khuôn mặt (Đeo đúng, Đeo sai và Không đeo khẩu trang).
-    \item \textbf{Tốc độ hội tụ nhanh:} Nhờ vào việc cấu hình phân tách lô dữ liệu (\textit{batch size}) hợp lý và áp dụng tốc độ học (\textit{learning rate}) thích ứng, đồ thị Loss của mô hình giảm thiểu mạnh mẽ và nhanh chóng đi vào trạng thái ổn định ngay từ chu kỳ (\textit{epoch}) thứ 5 đến thứ 10.
-    \item \textbf{Khả năng tổng quát hóa tốt:} Đường cong học tập giữa tập \textit{Train} và \textit{Validation} bám sát nhau, chứng minh cấu trúc mạng kết hợp các kỹ thuật điều chuẩn (\textit{Dropout, Batch Normalization}) đã kiểm soát và triệt tiêu hoàn toàn hiện tượng quá khớp (\textit{Overfitting}).
+    \item \textbf{Tốc độ hội tụ nhanh:} Nhờ vào việc cấu hình phân tách lô dữ liệu (\textit{batch size}) hợp lý và áp dụng tốc độ học (\textit{learning rate}) thích ứng, đồ thị Loss của mô hình giảm thiểu mạnh mẽ và nhanh chóng đi vào trạng thái ổn định ngay từ các epoch đầu tiên.
+    \item \textbf{Khả năng tổng quát hóa tốt:} Validation Loss thấp hơn Train Loss và Validation Accuracy cao hơn Train Accuracy ở cả hai mô hình, chứng minh kiến trúc mạng kết hợp Dropout và Batch Normalization đã kiểm soát tốt hiện tượng quá khớp (\textit{Overfitting}). Hiệu ứng này được tăng cường nhờ bước lọc ảnh $< 64$ px và tăng cường dữ liệu với ColorJitter mạnh hơn.
 \end{itemize}
 
 \subsubsection{Nhược điểm}
@@ -1081,6 +1114,7 @@ Bên cạnh những kết quả đạt được, hệ thống vẫn tồn tại 
     \item \textbf{Độ nhạy cảm với môi trường:} Hiệu năng nhận diện của mô hình có xu hướng suy giảm nhẹ khi thử nghiệm trong các điều kiện ánh sáng yếu, ánh sáng phức tạp (ngược sáng) hoặc khi góc camera bị che khuất một phần.
     \item \textbf{Chi phí tính toán:} Kích thước ảnh đầu vào $512\times512$ và kiến trúc CNN 4 khối đòi hỏi năng lực xử lý phần cứng (GPU) tương đối lớn trong pha huấn luyện để đạt được thời gian tối ưu.
     \item \textbf{Nhầm lẫn ở các góc khuất:} Khi khuôn mặt nghiêng góc quá lớn hoặc bị che bởi các vật thể có màu sắc tương đồng với khẩu trang, ma trận nhầm lẫn đôi khi ghi nhận sự sai lệch giữa hai lớp "Đeo sai" và "Không đeo".
+    \item \textbf{Adam dừng sớm:} Bộ tối ưu Adam kích hoạt Early Stopping sau 12 epochs, chưa đủ để đánh giá đầy đủ tiềm năng hội tụ dài hạn so với SGD (24 epochs).
 \end{itemize}
 
 \subsection{Kết quả thử nghiệm thời gian thực trên Webcam}
@@ -1102,7 +1136,7 @@ Khi tích hợp mô hình CNN đã huấn luyện vào luồng video thời gian
     \item \textbf{Tích hợp cảnh báo âm thanh và gửi thông báo:} Hoàn thiện module phát âm thanh cảnh báo và tích hợp gửi thông báo tức thời (push notification) đến thiết bị di động của bộ phận an ninh khi phát hiện vi phạm.
     \item \textbf{Triển khai trên phần cứng nhúng:} Đóng gói và triển khai hệ thống lên các thiết bị nhúng như NVIDIA Jetson Nano hoặc Raspberry Pi để thực hiện suy luận tại chỗ (\textit{Edge Inference}) mà không phụ thuộc vào kết nối cloud.
 \end{itemize}
-
+Mã nguồn dự án được công khai tại: \textbf{\textit{https://github.com/Trannganne/face-mask-tracking-system.git}}
 
 % ==================== TÀI LIỆU THAM KHẢO ====================
 \newpage
